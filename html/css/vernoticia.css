@@ -1,0 +1,278 @@
+/* Estilos generales */
+.barra {
+    justify-content: space-between;
+    display: flex;
+    padding: 10px 20px;
+    background: none;
+    color: black;
+}
+
+.logo img {
+    height: 70px;
+    width: auto;
+    vertical-align: middle;
+    margin: 0 auto;
+}
+
+a:visited {
+    color: inherit;
+}
+
+body {
+    background: linear-gradient(135deg, #2980b9, #2c3e50);
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.botones-sesion {
+    display: flex;
+    align-items: center;
+}
+
+.botonInicio,
+.botonRegistro {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e5e5e5;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.botonInicio:hover,
+.botonRegistro:hover {
+    color: #a71414;
+}
+
+/* Estilo del dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Estilo del botón que activa el desplegable */
+.dropbtn {
+    margin-right: 40px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Estilo del contenido del menú desplegable */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    /* Anchura igual al botón que lo activa */
+    width: inherit;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Estilo de los enlaces dentro del menú desplegable */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+/* Cambia el color de fondo del enlace al pasar el ratón */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Muestra el menú desplegable cuando se pasa el ratón sobre el botón */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilo adicional para el botón al pasar el ratón */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+.overlay-trigger {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.overlay-trigger:hover {
+    background-color: #f0f0f0;
+}
+
+/* Estilos para el contenedor del mensaje */
+.noticia {
+    margin-bottom: 0px;
+    width: 100%;
+    position: relative;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el nombre de usuario */
+.nombre-usuario-noticia {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin: 0;
+    color: #451a86;
+}
+
+.noticia-titulo {
+    /* Agregar estilos según sea necesario */
+}
+
+/* Estilos para el mensaje */
+.noticia-contenido {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Estilos para la fecha */
+.noticia-fecha {
+    font-size: 12px;
+    color: #999;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+/* Estilos para el contenedor del formulario de comentario */
+.form-comentario {
+    margin-top: 20px;
+}
+
+.contenedor-comentario {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+}
+
+.area_comentario {
+    flex: 1;
+    padding: 3px;
+    border: none;
+    border-radius: 5px;
+    resize: none;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+
+.area_comentario:focus {
+    outline: none;
+}
+
+.boton-comentario {
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.boton-comentario i {
+    font-size: 20px;
+}
+
+.boton-comentario i:hover {
+    color: #0056b3;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5% auto;
+}
+
+.centrar-contenedor {
+    margin: 5% auto;
+    width: 70%;
+}
+
+.tamano-contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/*PARTE COMENTARIO*/
+.comentario {
+    position: relative;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    width: 99%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.div-perfil-comentario {
+    display: flex;
+    align-items: center;
+}
+
+.foto-perfil {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.nombre-usuario-comentario {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin: 0;
+    color: #451a86;
+}
+
+.contenido-comentario {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.fecha-envio-comentario {
+    font-size: 12px;
+    color: #999;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}

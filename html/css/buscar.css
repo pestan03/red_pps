@@ -1,0 +1,20 @@
+.resultados-individuales {
+    width: calc(33.33% - 20px); /* 33.33% del ancho del contenedor menos el margen */
+
+    text-align: center;
+}
+.resultados-individuales *{
+    margin: 0 auto;
+}
+
+.resultados-individuales img {
+    width: 100px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    height: 100px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    border-radius: 50%; /* Esto es opcional, para imágenes redondeadas */
+    object-fit: cover; /* Esto es opcional, para ajustar el tamaño de la imagen sin distorsionar */
+}
+
+figcaption {
+    text-decoration: none;
+    text-align: center;    
+}

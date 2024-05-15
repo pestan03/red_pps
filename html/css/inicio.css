@@ -1,0 +1,466 @@
+/* Estilos generales */
+a:visited {
+    color: inherit;
+}
+
+body {
+    background: linear-gradient(135deg, #2980b9, #2c3e50);
+}
+
+a {
+    text-decoration: none;
+}
+
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: none;
+    color: black;
+}
+
+.logo img {
+    height: 70px;
+    width: auto;
+}
+
+
+
+.botones-sesion {
+    display: flex;
+    align-items: center;
+}
+
+
+.botonInicio,
+.botonRegistro {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e5e5e5;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.botonInicio:hover,
+.botonRegistro:hover {
+    color: #a71414;
+}
+
+/* Estilos del dropdown */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Estilo del botón que activa el desplegable */
+.dropbtn {
+    margin-right: 40px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Estilo del contenido del menú desplegable */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    /* Anchura igual al botón que lo activa */
+    width: inherit;
+
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Estilo de los enlaces dentro del menú desplegable */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+/* Cambia el color de fondo del enlace al pasar el ratón */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Muestra el menú desplegable cuando se pasa el ratón sobre el botón */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilo adicional para el botón al pasar el ratón */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+/* Otros */
+
+
+section {
+    margin: 0 auto;
+    max-width: 800px;
+    overflow-y: auto;
+    max-height: calc(100vh - 100px);
+    scrollbar-width: none;
+}
+
+section::-webkit-scrollbar {
+    display: none;
+}
+
+textarea {
+    resize: none;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.fixed-input {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+
+
+.overlay-trigger {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.overlay-trigger:hover {
+    background-color: #f0f0f0;
+}
+
+.mensajes {
+    justify-content: center;
+    /* Centra horizontalmente los elementos */
+    align-items: center;
+    /* Centra verticalmente los elementos */
+    /* Centra el texto dentro del contenedor */
+    margin: 0 auto;
+    /* Centra el contenedor horizontalmente en la página */
+}
+
+.mensaje {
+    position: relative;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    max-width: 700px;
+    /* Ancho máximo del mensaje */
+    max-height: 200px;
+    /* Altura máxima del mensaje */
+    overflow: hidden;
+    width: 100%;
+    /* Para que los mensajes ocupen todo el ancho disponible */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+
+.div-perfil-mensaje {
+    display: flex;
+    align-items: center;
+}
+
+.foto-perfil {
+    width: 40px;
+    overflow: hidden;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.nombre-usuario {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin: 0;
+    color: #333;
+}
+
+.mensaje-texto {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.imagenm {
+    max-width: 300px;
+    /* Ajusta el tamaño máximo al ancho del contenedor */
+    height: auto;
+    /* Mantiene la proporción original de la imagen */
+}
+
+
+.fecha-envio {
+    font-size: 12px;
+    color: #999;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.form-comentario {
+    margin-top: 20px;
+}
+
+.contenedor-comentario {
+    display: flex;
+    align-items: center;
+}
+
+.area_comentario {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    font-size: 14px;
+    background-color: transparent;
+}
+
+.boton-comentario {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.boton-comentario:hover {
+    background-color: #0056b3;
+}
+
+.boton-comentario i {
+    font-size: 20px;
+}
+
+.boton-comentario:hover {
+    background-color: #0056b3;
+}
+
+.boton-comentario i {
+    font-size: 20px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .barra {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .botones-sesion {
+        margin-top: 10px;
+    }
+
+    .mensajes {
+        max-height: calc(100vh - 200px);
+    }
+
+    .overlay .content textarea {
+        height: 80px;
+    }
+}
+
+/* Estilos generales */
+
+.overlay {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Fondo semi-transparente */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /* Asegura que esté por encima de otros elementos */
+}
+
+.overlay.active {
+    display: flex;
+}
+
+.content {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    width: 60%;
+    /* Ocupa el 60% del ancho de la pantalla */
+    height: 70%;
+    /* Ocupa el 80% de la altura de la pantalla */
+    max-width: 600px;
+    /* Establece un ancho máximo */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.publish-button {
+    background-color: #007bff;
+    /* Color azul brillante */
+    
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    /* Ocupa todo el ancho disponible */
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+input[type="text"],
+textarea,
+input[type="file"] {
+    width: calc(100% - 20px);
+    /* Resta el padding */
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+
+
+
+.buscar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    position: relative;
+}
+
+#resultados-busqueda {
+    position: absolute;
+    /* Moverlo hacia abajo para que empiece justo debajo del input */
+    z-index: 999;
+    background-color: white;
+    border: 1px solid #ccc;
+    width: 500px;
+    left: 30%;
+    /* Ajusta el ancho según tus necesidades */
+    max-height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+
+.buscar form {
+    margin-bottom: 10px;
+}
+
+/* Estilos para los resultados de búsqueda */
+
+
+/*BARRA DE BUSQUEDA*/
+.buscar input[type="text"] {
+
+
+    /* Agrega bordes redondeados */
+    font-family: 'Arial', sans-serif;
+    /* Elige una fuente legible */
+    font-size: 16px;
+    width: 50vh;
+    /* Tamaño de fuente */
+    outline: none;
+    vertical-align: center;
+    /* Elimina el resaltado del foco */
+}
+
+
+.buscar input[type="text"]:focus {
+    border-color: #007bff;
+    /* Cambia el color del borde al enfocar el input */
+}
+
+.resultados-individuales {
+    width: calc(33.33% - 20px); /* 33.33% del ancho del contenedor menos el margen */
+    margin: 10px;
+    text-align: center;
+}
+
+.resultados-individuales img {
+    width: 100px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    height: 100px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    border-radius: 50%; /* Esto es opcional, para imágenes redondeadas */
+    object-fit: cover; /* Esto es opcional, para ajustar el tamaño de la imagen sin distorsionar */
+}
+
+.resultados-individuales a {
+    text-decoration: none;
+    
+}
