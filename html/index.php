@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>Inicio</title>
 </head>
-
 <body>
     <nav class="barra">
         <div class="logo">
