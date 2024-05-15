@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>Inicio</title>
 </head>
-holaaa
+
 <body>
     <nav class="barra">
         <div class="logo">
