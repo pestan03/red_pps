@@ -22,7 +22,6 @@
         </div>
 
 
-
         <div id="botonesSesion" class="botones-sesion">
             <?php
             // Incluye el archivo de conexión a la base de datos aquí
