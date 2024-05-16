@@ -27,9 +27,9 @@ jobs:
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
-
+      - name: Check PHP version
+        run: php -v
       - name: Run test suite
         run: vendor/bin/phpunit ./html/test/pruebasRegistro.php
        # Añade esta línea debajo de "name: Run test suite"
-      - name: Check PHP version
-        run: php -v
+      

@@ -2,7 +2,7 @@
     "name": "pestan03/red_pps",
     "description": "A short description of my project",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "ext-mysqli": "*",
         "ext-pdo": "*",
         "ext-pdo_mysql": "*",
@@ -18,7 +18,7 @@
     },
     "config": {
         "platform": {
-            "php": "8.2.0"
+            "php": "8.3.0"
         }
     },
     "license": "proprietary"
