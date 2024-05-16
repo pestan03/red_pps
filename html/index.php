@@ -60,7 +60,6 @@
         // mostrar mensajes por busqueda de usuario
         if (isset($_GET['idBusqueda'])) {
             $usuario_id = $_GET['idBusqueda'];
-            echo $usuario_id;
             $sql_busqueda = "SELECT noticias.id_noticia, noticias.titulo_noticia, noticias.contenido_noticia, noticias.fecha_publicacion, usuarios.user, usuarios.id AS usuario_id, usuarios.foto_perfil
                     FROM noticias 
                     INNER JOIN usuarios ON noticias.id_usuario = usuarios.id
