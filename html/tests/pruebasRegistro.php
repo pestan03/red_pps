@@ -2,7 +2,7 @@
 use PHPUnit\Framework\TestCase;
 set_include_path(get_include_path() . PATH_SEPARATOR . '/php');
 
-require 'registro.php'; // Ajusta la ruta según tu configuración
+require '/html/php/registro.php'; // Ajusta la ruta según tu configuración
 
 class PruebasUsuario extends TestCase
 {
