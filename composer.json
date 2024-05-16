@@ -26,8 +26,6 @@
         },
         "process-timeout": 900
     },
-    "scripts": {
-        "test": "vendor/bin/phpunit tests"
-    },
+    
     "license": "proprietary"
 }
