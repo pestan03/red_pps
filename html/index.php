@@ -123,6 +123,7 @@
     <div class="overlay-trigger">
         <i class="fas fa-pencil-alt"></i>
     </div>
+    
     <div class="overlay">
         <div class="content">
             <div class="close-button"><i class="material-icons">close</i></div>
