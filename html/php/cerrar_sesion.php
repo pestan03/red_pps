@@ -1,5 +1,5 @@
 <?
-include './conexion.php';
+include_once './conexion.php';
 // Código PHP para eliminar la cookie de sesión
 if (isset($_COOKIE['cookie_session'])) {
     setcookie('cookie_session', '',time()-3600 , '/');

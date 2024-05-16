@@ -25,7 +25,7 @@
         <div id="botonesSesion" class="botones-sesion">
             <?php
             // Incluye el archivo de conexión a la base de datos aquí
-            include './php/conexion.php';
+            include_once './php/conexion.php';
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             // Evita la inyección SQL preparando la consulta
             if (isset($_COOKIE['cookie_session'])) {
@@ -61,7 +61,7 @@
         if (isset($_GET['idBusqueda'])) {
             $usuario_id = $_GET['idBusqueda'];
             $sql_busqueda = "SELECT noticias.id_noticia, noticias.titulo_noticia, noticias.contenido_noticia, noticias.fecha_publicacion, usuarios.user, usuarios.id AS usuario_id, usuarios.foto_perfil
-                    FROM noticias 
+                    FROM noticias
                     INNER JOIN usuarios ON noticias.id_usuario = usuarios.id
                     WHERE usuarios.id = :usuario_id
                     ORDER BY noticias.fecha_publicacion DESC";
@@ -89,7 +89,7 @@
         } else {
             // Mostrar todos los mensajes
             $sql = "SELECT noticias.id_noticia, noticias.titulo_noticia, noticias.contenido_noticia, noticias.fecha_publicacion, usuarios.user, usuarios.id AS usuario_id, usuarios.foto_perfil
-        FROM noticias 
+        FROM noticias
         INNER JOIN usuarios ON noticias.id_usuario = usuarios.id
         ORDER BY noticias.fecha_publicacion DESC";
 

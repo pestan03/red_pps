@@ -1,6 +1,6 @@
 <?php
 // Conexión a la base de datos (modifica estos valores según tu configuración)
-include './conexion.php';
+include_once './conexion.php';
 
 // Crear conexión
 // Establecer el modo de error PDO a excepción

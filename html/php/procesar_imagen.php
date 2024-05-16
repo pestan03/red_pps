@@ -9,7 +9,7 @@
 <body>
 <?php
 // Conectar a la base de datos
-include './conexion.php';
+include_once './conexion.php';
 
 try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

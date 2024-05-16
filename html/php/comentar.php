@@ -1,5 +1,5 @@
 <?php
-include './conexion.php';
+include_once './conexion.php';
 
 // Verificar si la cookie de sesión existe
 if (isset($_COOKIE['cookie_session'])) {

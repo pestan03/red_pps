@@ -1,6 +1,6 @@
 <?php
 // Conexión a la base de datos (modifica estos valores según tu configuración)
-include './conexion.php';
+include_once './conexion.php';
 
 // Verifica si se ha enviado el formulario de manera segura
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

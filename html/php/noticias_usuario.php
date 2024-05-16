@@ -2,7 +2,7 @@
 // noticias_usuario.php
 
 // Incluir el archivo de conexión a la base de datos
-include './conexion.php';
+include_once './conexion.php';
 
 // Verificar si se recibió un ID de usuario
 if (isset($_GET['usuario_id'])) {
