@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-require '/html/php/registro.php'; // Ajusta la ruta según tu configuración
+require '../html/php/registro.php'; // Ajusta la ruta según tu configuración
 
 class PruebasUsuario extends TestCase
 {
