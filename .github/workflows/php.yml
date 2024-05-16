@@ -9,14 +9,6 @@ jobs:
   run_phpunit_tests:
     name: Run PHPUnit Tests
     runs-on: ubuntu-latest
-    services:
-      mysql:
-        image: mysql:8.3.0
-        env:
-          MYSQL_SERVERNAME: db
-          MYSQL_DATABASE: red
-          MYSQL_USER: root
-          MYSQL_PASSWORD: root_password
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
