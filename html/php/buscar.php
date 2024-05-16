@@ -55,7 +55,7 @@ if (isset($_GET['q'])) {
 
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="buscar.js" defer></script>
+    <script src="index.js"></script>
 </body>
 
 </html>

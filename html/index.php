@@ -60,7 +60,6 @@
         // mostrar mensajes por busqueda de usuario
         if (isset($_GET['idBusqueda'])) {
             $usuario_id = $_GET['idBusqueda'];
-            echo $_GET['idBusqueda'];
             echo $usuario_id;
             $sql_busqueda = "SELECT noticias.id_noticia, noticias.titulo_noticia, noticias.contenido_noticia, noticias.fecha_publicacion, usuarios.user, usuarios.id AS usuario_id, usuarios.foto_perfil
                     FROM noticias 
@@ -123,7 +122,7 @@
     <div class="overlay-trigger">
         <i class="fas fa-pencil-alt"></i>
     </div>
-    
+
     <div class="overlay">
         <div class="content">
             <div class="close-button"><i class="material-icons">close</i></div>
