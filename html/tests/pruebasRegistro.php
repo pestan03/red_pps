@@ -1,6 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
-class PruebasUsuario extends TestCase
+class pruebasRegistro extends TestCase
 {
     public function testValidarContrasena()
     {

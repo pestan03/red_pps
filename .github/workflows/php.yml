@@ -30,15 +30,15 @@ jobs:
         with:
           php-version: '8.3'
           extensions: imagick, swoole
-
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
-
       - name: Check PHP version
         run: php -v
-
-      - name: Set up environment variables and run tests
+      - name: Run test suite
         run: |
           export PHPUNIT=vendor/bin/phpunit
-          export PHP_INCLUDE_PATH=html/php/registro.php
+          export PHP_INCLUDE_PATH=/html/php/
           $PHPUNIT html/tests/pruebasRegistro.php
+
+       # Añade esta línea debajo de "name: Run test suite"
+      
