@@ -1,1 +1,9 @@
-<includePath>/html/php/</includePath>
+<php>
+    <phpunit>
+        <includePath>/html/php/</includePath>
+        <env name="DB_HOST" value="172.24.0.2" />
+        <env name="DB_DATABASE" value="red" />
+        <env name="DB_USERNAME" value="root" />
+        <env name="DB_PASSWORD" value="root_password" />
+    </phpunit>
+</php>
