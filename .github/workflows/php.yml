@@ -35,14 +35,14 @@ jobs:
         run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u ${{secrets.DOCKER_USER}} --password-stdin
       - name: ps 1
         run: docker ps
-      - name: Push Docker web
+      - name: Pull Docker web
         run: docker pull pestan/red_pps:php-8.2-apache
-      - name: Push Docker phpmyadmin
+      - name: Pull Docker phpmyadmin
         run: docker pull pestan/red_pps:phpmyadmin-latest
-      - name: Push Docker db
+      - name: Pull Docker db
         run: docker pull pestan/red_pps:mysql-8.3.0
       - name: Levantar contenedor MySQL
-        run: docker run -d --name mysql-8.3.0 -e MYSQL_ROOT_PASSWORD=root_password -e MYSQL_SERVERNAME=db -e MYSQL_DATABASE=red -p 3306:3306  pestan/red_pps:mysql-8.3.0
+        run: docker run -d --name mysql-8.3.0 -e MYSQL_ROOT_PASSWORD=root_password -e MYSQL_USER=root -e MYSQL_SERVERNAME=db -e MYSQL_DATABASE=red -p 3306:3306  pestan/red_pps:mysql-8.3.0
       - name: Levantar contenedor PHPMyAdmin
         run: docker run -d --name phpmyadmin-latest -p 8080:80 pestan/red_pps:phpmyadmin-latest
       - name: Levantar contenedor Apache PHP
