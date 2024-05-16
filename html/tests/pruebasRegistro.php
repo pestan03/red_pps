@@ -13,7 +13,7 @@ class FuncionesTest extends TestCase {
         ];
 
         foreach ($tests as $dni => $expected) {
-            $result = pruebasRegistro::comprobar_dni_letra($dni);
+            $result = Funciones::comprobar_dni_letra($dni);
             $this->assertEquals($expected, $result, "Failed asserting that $dni is " . ($expected ? 'valid' : 'invalid'));
         }
     }
@@ -30,7 +30,7 @@ class FuncionesTest extends TestCase {
         ];
 
         foreach ($tests as $password => $expected) {
-            $result = pruebasRegistro::validar_contrasena($password);
+            $result = Funciones::validar_contrasena($password);
             $this->assertEquals($expected, $result, "Failed asserting that '$password' is " . ($expected ? 'valid' : 'invalid'));
         }
     }

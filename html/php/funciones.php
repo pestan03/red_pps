@@ -1,6 +1,6 @@
 
 <?php
-class pruebasRegistro {
+class Funciones {
     // Función para comprobar la correspondencia DNI+letra
     public static function comprobar_dni_letra($dni_completo) {
         // Extraer solo los números del DNI
