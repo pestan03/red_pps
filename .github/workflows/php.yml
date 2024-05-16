@@ -38,10 +38,4 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: Run test suite
-        run: |
-          export PHPUNIT=vendor/bin/phpunit
-          export PHP_INCLUDE_PATH=/html/php/
-          $PHPUNIT html/tests/pruebasRegistro.php
-
-       # Añade esta línea debajo de "name: Run test suite"
-      
+        run: vendor/bin/phpunit html/tests/pruebasRegistro.php
