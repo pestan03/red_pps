@@ -23,12 +23,12 @@ try {
             echo "El nombre de usuario ya está en uso.";
         } else {
             // Comprobar la fortaleza de la contraseña utilizando la función validar_contraseña
-            if (Funciones::validar_contrasena($pass)) {
+            if (Funciones::validarContrasena($pass)) {
                 // Convertir la contraseña a hash
                 $hashed_password = hash('sha256', $pass);
 
                 // Comprobar la correspondencia DNI+letra utilizando la función comprobar_dni_letra de la clase Funciones
-                if (Funciones::comprobar_dni_letra($dni)) {
+                if (Funciones::comprobarDniLetra($dni)) {
                     // Preparar consulta para insertar los datos en la base de datos utilizando consultas preparadas
                     $stmt_insert_user = $conn->prepare("INSERT INTO usuarios (user, password, dni, email) VALUES (?, ?, ?, ?)");
                     $stmt_insert_user->execute([$user, $hashed_password, $dni, $email]);

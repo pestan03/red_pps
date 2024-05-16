@@ -69,12 +69,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // MUESTRA DESPLEGABLE DE PERFIL Y LOGOUT
 function showDropdown() {
-    var dropdown = document.getElementById("myDropdown");
+    let dropdown = document.getElementById("myDropdown");
     dropdown.classList.add("show");
 }
 
 function hideDropdown() {
-    var dropdown = document.getElementById("myDropdown");
+    let dropdown = document.getElementById("myDropdown");
     dropdown.classList.remove("show");
 }
 
@@ -110,13 +110,13 @@ function selectImage() {
 
 //BUSCADOR
 $(document).ready(function () {
-    var typingTimer; // Variable para almacenar el temporizador
-    var doneTypingInterval = 500; // Tiempo de espera en milisegundos (500 ms)
+    let typingTimer; // letiable para almacenar el temporizador
+    let doneTypingInterval = 500; // Tiempo de espera en milisegundos (500 ms)
 
     // Evento al soltar una tecla en el campo de búsqueda
     $('input[name="q"]').on('keyup', function () {
         clearTimeout(typingTimer); // Limpiar el temporizador
-        var q = $(this).val(); // Obtener el valor del campo de búsqueda
+        let q = $(this).val(); // Obtener el valor del campo de búsqueda
         // Empezar el temporizador para esperar un poco antes de enviar la solicitud
         typingTimer = setTimeout(function () {
             // Realizar la solicitud al servidor
@@ -150,7 +150,7 @@ $(document).ready(function () {
 document.getElementById('search-form').addEventListener('submit', function (event) {
     event.preventDefault(); // Evitar que el formulario se envíe
 
-    var formData = new FormData(this);
+    let formData = new FormData(this);
 
     fetch('./php/buscar.php', {
         method: 'GET',
@@ -158,7 +158,7 @@ document.getElementById('search-form').addEventListener('submit', function (even
     })
         .then(response => response.text())
         .then(data => {
-            var resultadosBusqueda = document.getElementById('resultados-busqueda');
+            let resultadosBusqueda = document.getElementById('resultados-busqueda');
             resultadosBusqueda.innerHTML = data;
             resultadosBusqueda.style.display = data.trim() !== '' ? 'block' : 'none'; // Mostrar resultados si hay datos, ocultar si no
         })
@@ -171,7 +171,7 @@ document.getElementById('search-form').addEventListener('submit', function (even
 // FUNCION FILTRADO MENSAJES POR USUARIO
 function redirectToIndex(userId) {
     // Actualizar la URL en la barra de direcciones
-    var newUrl = 'index.php?idBusqueda=' + userId;
+    let newUrl = 'index.php?idBusqueda=' + userId;
     history.pushState(null, null, newUrl);
 
     // Cargar dinámicamente el contenido de la página utilizando AJAX
