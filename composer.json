@@ -11,23 +11,23 @@
         "phpunit/phpunit": "^9.5"
     },
     "autoload": {
-        "psr-4": {
-            "MyProject\\": "src/"
-        }
+        "classmap": [
+            "html"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
         }
     },
-    "scripts": {
-        "test": "phpunit"
-    },
     "config": {
         "platform": {
             "php": "8.3.0"
         },
         "process-timeout": 900
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit tests"
     },
     "license": "proprietary"
 }
