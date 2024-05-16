@@ -34,11 +34,11 @@ jobs:
             ${{ runner.os }}-php-
 
       - name: Levantar contenedor MySQL
-        run: docker run -d --name mysql_container pestan/red_pps:mysql-8.3.0
+        run: docker run -d --name mysql-8.3.0 pestan/red_pps:mysql-8.3.0
       - name: Levantar contenedor PHPMyAdmin
-        run: docker run -d --name phpmyadmin_container -p 8080:80 pestan/red_pps:phpmyadmin-latest
+        run: docker run -d --name phpmyadmin-latest -p 8080:80 pestan/red_pps:phpmyadmin-latest
       - name: Levantar contenedor Apache PHP
-        run: docker run -d --name apache_php_container -p 8000:80 pestan/red_pps:php-8.2-apache
+        run: docker run -d --name php-8.2-apache -p 8000:80 pestan/red_pps:php-8.2-apache
         
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
