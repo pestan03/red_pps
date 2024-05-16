@@ -38,6 +38,6 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: Access container from GitHub Actions
-        run: curl http://172.24.0.4
+        run: curl http://172.24.0.2
       - name: Run test suite
         run: vendor/bin/phpunit html/tests/pruebasRegistro.php
