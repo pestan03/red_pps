@@ -23,30 +23,42 @@ jobs:
           key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-php-
+      
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u ${{secrets.DOCKER_USER}} --password-stdin
+      
       - name: ps 1
         run: docker ps
+      
       - name: Pull Docker web
         run: docker pull pestan/red_pps:php-8.2-apache
       - name: Pull Docker phpmyadmin
         run: docker pull pestan/red_pps:phpmyadmin-latest
       - name: Pull Docker db
         run: docker pull pestan/red_pps:mysql-8.3.0
+      
       - name: Levantar contenedor MySQL
         run: docker run -d --name mysql-8.3.0 -e MYSQL_ROOT_PASSWORD=root_password -e MYSQL_USER=root -e MYSQL_USER=user -e MYSQL_PASSWORD=pass -e MYSQL_DATABASE=red -p 3306:3306  pestan/red_pps:mysql-8.3.0
       - name: Levantar contenedor PHPMyAdmin
         run: docker run -d --name phpmyadmin-latest -p 8080:80 pestan/red_pps:phpmyadmin-latest
       - name: Levantar contenedor Apache PHP
         run: docker run -d --name php-8.2-apache -p 8000:80 pestan/red_pps:php-8.2-apache
+      
       - name: ps 2
         run: docker ps -a
+      
       - name: logs mysql
         run: docker logs mysql-8.3.0
+      
       - name: inspect localhost
         run: docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$(docker ps -qf "name=php-8.2-apache")"
+      
       - name: wget localhost
         run: wget http://172.17.0.4/php/registro.php
+        
+      - name: wget registro.php
+        run: wget http://172.17.0.4/php/registro.php
+
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
         with:
