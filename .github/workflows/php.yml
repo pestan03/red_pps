@@ -33,6 +33,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-php-
 
+      - name: Levantar contenedor MySQL
+        run: docker run -d --name mysql_container pestan/red_pps:mysql-8.3.0
+      - name: Levantar contenedor PHPMyAdmin
+        run: docker run -d --name phpmyadmin_container -p 8080:80 pestan/red_pps:phpmyadmin-latest
+      - name: Levantar contenedor Apache PHP
+        run: docker run -d --name apache_php_container -p 8000:80 pestan/red_pps:php-8.2-apache
+        
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
         with:
@@ -121,21 +128,3 @@ jobs:
       # - name: Run test suite
         # run: vendor/bin/phpunit html/tests/pruebasRegistro.php
         
-# name: Levantar Contenedores Docker
-
-# on:
-  # push:
-    # branches:
-      # - master
-
-# jobs:
-  # levantar_contenedores:
-    # name: Levantar Contenedores
-    # runs-on: ubuntu-latest
-    # steps:
-      # - name: Levantar contenedor MySQL
-        # run: docker run -d --name mysql_container pestan/red_pps:mysql-8.3.0
-      # - name: Levantar contenedor PHPMyAdmin
-        # run: docker run -d --name phpmyadmin_container -p 8080:80 pestan/red_pps:phpmyadmin-latest
-      # - name: Levantar contenedor Apache PHP
-        # run: docker run -d --name apache_php_container -p 8000:80 pestan/red_pps:php-8.2-apache
