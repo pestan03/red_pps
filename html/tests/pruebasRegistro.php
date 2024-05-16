@@ -1,6 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
-require_once("/home/runner/work/red_pps/red_pps/html/php/");
+require_once("/home/runner/work/red_pps/red_pps/html/php/conexion.php");
+require_once("/home/runner/work/red_pps/red_pps/html/php/registro.php");
 class PruebasRegistro extends TestCase
 {
     public function testValidarContrasena()
