@@ -3,7 +3,7 @@ use PHPUnit\Framework\TestCase;
 
 require_once '/home/runner/work/red_pps/red_pps/html/php/funciones.php';  // Ajusta la ruta al archivo funciones.php
 
-class Funciones extends TestCase {
+class FuncionesTest extends TestCase {
     public function testComprobarDniLetra() {
         $tests = [
             '12345678Z' => true,   // Ejemplo de un DNI correcto
