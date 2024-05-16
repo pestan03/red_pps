@@ -1,33 +1,34 @@
 <?php
 use PHPUnit\Framework\TestCase;
-require_once 'registro.php';
 class PruebasUsuario extends TestCase
 {
     public function testValidarContrasena()
     {
+        require_once '../php/registro.php';
         // Pruebas para la función validar_contraseña
-
+        
         // Caso: Contraseña válida
         $this->assertTrue(validar_contraseña("Contraseña1#"));
-
+        
         // Caso: Contraseña demasiado corta
         $this->assertFalse(validar_contraseña("short1#"));
-
+        
         // Caso: Contraseña sin mayúsculas
         $this->assertFalse(validar_contraseña("minuscula1#"));
-
+        
         // Caso: Contraseña sin minúsculas
         $this->assertFalse(validar_contraseña("MAYUSCULA1#"));
-
+        
         // Caso: Contraseña sin dígitos
         $this->assertFalse(validar_contraseña("SoloLetras#"));
-
+        
         // Caso: Contraseña sin caracteres especiales
         $this->assertFalse(validar_contraseña("MissingSpecialChar1"));
     }
-
+    
     public function testComprobarDniLetra()
     {
+        require_once '../php/registro.php';
         // Pruebas para la función comprobar_dni_letra
 
         // Caso: DNI válido
