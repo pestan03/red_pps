@@ -44,7 +44,7 @@ jobs:
       - name: logs mysql
         run: docker logs mysql-8.3.0
       - name: curl localhost
-        run: docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$(docker ps -qf "name='php-8.2-apache'")"
+        run: docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$(docker ps -qf "name=php-8.2-apache")"
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
         with:
