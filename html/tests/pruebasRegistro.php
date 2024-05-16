@@ -1,7 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
-require_once("/home/runner/work/red_pps/red_pps/html/php/conexion.php");
-require_once("/home/runner/work/red_pps/red_pps/html/php/registro.php");
+require_once("/home/runner/work/red_pps/red_pps/html/php/funciones.php");
 class PruebasRegistro extends TestCase
 {
     public function testValidarContrasena()
@@ -29,7 +28,6 @@ class PruebasRegistro extends TestCase
     
     public function testComprobarDniLetra()
     {
-        // Pruebas para la función comprobar_dni_letra
 
         // Caso: DNI válido
         $this->assertTrue(comprobar_dni_letra("12345678Z"));

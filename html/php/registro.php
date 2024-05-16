@@ -1,5 +1,6 @@
 <?php
 include './conexion.php';
+include './funciones.php';
 
 try {
     // Crear conexión PDO
@@ -22,16 +23,18 @@ try {
             echo "El nombre de usuario ya está en uso.";
         } else {
             // Comprobar la fortaleza de la contraseña utilizando la función validar_contraseña
-            if (validar_contraseña($pass)) {
+            if (Funciones::validar_contraseña($pass)) {
                 // Convertir la contraseña a hash
                 $hashed_password = hash('sha256', $pass);
 
-                // Comprobar la correspondencia DNI+letra utilizando la función comprobar_dni_letra
-                if (comprobar_dni_letra($dni)) {
+                // Comprobar la correspondencia DNI+letra utilizando la función comprobar_dni_letra de la clase Funciones
+                if (Funciones::comprobar_dni_letra($dni)) {
                     // Preparar consulta para insertar los datos en la base de datos utilizando consultas preparadas
                     $stmt_insert_user = $conn->prepare("INSERT INTO usuarios (user, password, dni, email) VALUES (?, ?, ?, ?)");
                     $stmt_insert_user->execute([$user, $hashed_password, $dni, $email]);
-                    header("Location: ../index.php");
+                    echo '<script type="text/javascript">';
+                    echo 'window.location.href="../../index.php";';
+                    echo '</script>';
                     exit();
                 } else {
                     echo "La letra del DNI no corresponde al número proporcionado.";
@@ -46,49 +49,6 @@ try {
 }
 
 // Función para validar la fortaleza de la contraseña
-function validar_contraseña($password) {
-    // La contraseña debe tener al menos 8 caracteres
-    if (strlen($password) < 8) {
-        return false;
-    }
-
-    // La contraseña debe contener al menos una letra mayúscula
-    if (!preg_match('/[A-Z]/', $password)) {
-        return false;
-    }
-
-    // La contraseña debe contener al menos una letra minúscula
-    if (!preg_match('/[a-z]/', $password)) {
-        return false;
-    }
-
-    // La contraseña debe contener al menos un dígito numérico
-    if (!preg_match('/[0-9]/', $password)) {
-        return false;
-    }
-
-    // La contraseña debe contener al menos un carácter especial
-    if (!preg_match('/[^a-zA-Z0-9]/', $password)) {
-        return false;
-    }
-
-    return true;
-}
-
-// Función para comprobar la correspondencia DNI+letra
-function comprobar_dni_letra($dni_completo) {
-    // Extraer solo los números del DNI
-    $numeros_dni = substr($dni_completo, 0, -1);
-    $letra_dni = strtoupper(substr($dni_completo, -1));
-
-    // Calcular la letra del DNI
-    $letras = 'TRWAGMYFPDXBNJZSQVHLCKE';
-    $indice = $numeros_dni % 23;
-    $letra_calculada = $letras[$indice];
-
-    // Comparar la letra del DNI calculada con la letra proporcionada
-    return $letra_calculada === $letra_dni;
-}
 
 ?>
 <script src="index.js"></script>
