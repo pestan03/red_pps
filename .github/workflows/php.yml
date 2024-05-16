@@ -16,10 +16,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u pestan --password-stdin
 
       - name: Validate composer.json and composer.lock
         run: composer validate --strict
 
+      - name: Pull Docker web
+        run: docker push pestan/red_pps:php-8.2-apache
+      - name: Pull Docker phpmyadmin
+        run: docker push pestan/red_pps:phpmyadmin-latest
+      - name: Pull Docker db
+        run: docker push pestan/red_pps:mysql-8.3.0
+        
       - name: Cache Composer packages
         id: composer-cache
         uses: actions/cache@v2
@@ -41,6 +51,6 @@ jobs:
         run: docker-compose up
 
       - name: Ver contenedor iniciados
-        run: docker ps
+        run: docker ps -a
       - name: Run test suite
         run: vendor/bin/phpunit html/tests/pruebasRegistro.php
