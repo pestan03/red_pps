@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-require_once '/home/runner/work/red_pps/red_pps/html/php/funciones.php';  // Ajusta la ruta al archivo funciones.php
+require_once '../php/funciones.php';  // Ajusta la ruta al archivo funciones.php
 
 class FuncionesTest extends TestCase {
     public function testComprobarDniLetra() {
