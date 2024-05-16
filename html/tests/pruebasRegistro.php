@@ -1,6 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
-require_once (__DIR__ . '/../html/php/registro.php');
+require_once("/home/runner/work/red_pps/red_pps/html/php/registro.php");
 class PruebasRegistro extends TestCase
 {
     public function testValidarContrasena()
