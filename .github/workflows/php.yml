@@ -38,7 +38,7 @@ jobs:
         run: composer install --prefer-dist --no-progress
         
       - name: Iniciar servicios Docker
-        run: docker-compose up -d
+        run: docker-compose up
 
       - name: Ver contenedor iniciados
         run: docker ps
