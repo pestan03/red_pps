@@ -1,38 +1,28 @@
-name: Build and Test
+name: Run PHPUnit Tests
 
 on:
   push:
     branches:
-      - '*'
+      - master
 
 jobs:
-  build_and_test:
-    name: Build and Test
-    runs-on: ubuntu-20.04
+  run_phpunit_tests:
+    name: Run PHPUnit Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.3.0
+        env:
+          MYSQL_SERVERNAME: db
+          MYSQL_DATABASE: red
+          MYSQL_USER: root
+          MYSQL_PASSWORD: root_password
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
-
       - name: Validate composer.json and composer.lock
         run: composer validate --strict
-
-      - name: Build and Push Docker web image
-        run: |
-          docker build -t pestan/red_pps:php-8.2-apache .
-          docker push pestan/red_pps:php-8.2-apache
-
-      - name: Build and Push Docker phpmyadmin image
-        run: |
-          docker build -t pestan/red_pps:phpmyadmin-latest .
-          docker push pestan/red_pps:phpmyadmin-latest
-
-      - name: Build and Push Docker db image
-        run: |
-          docker build -t pestan/red_pps:mysql-8.3.0 .
-          docker push pestan/red_pps:mysql-8.3.0
 
       - name: Cache Composer packages
         id: composer-cache
@@ -52,9 +42,8 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
 
-      - name: Run test suite
+      - name: Run PHPUnit tests
         run: vendor/bin/phpunit html/tests/pruebasRegistro.php
-
 
 
 
