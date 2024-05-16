@@ -13,4 +13,3 @@
         error_log("Error de conexión: " . $e->getMessage());
         die("Error de conexión a la base de datos. Por favor, inténtalo de nuevo más tarde.");
     }
-?>

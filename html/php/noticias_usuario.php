@@ -11,7 +11,7 @@ if (isset($_GET['usuario_id'])) {
 
     // Preparar la consulta SQL para recuperar las noticias del usuario
     $sql = "SELECT noticias.id_noticia, noticias.titulo_noticia, noticias.contenido_noticia, noticias.fecha_publicacion, usuarios.user, usuarios.foto_perfil
-            FROM noticias 
+            FROM noticias
             INNER JOIN usuarios ON noticias.id_usuario = usuarios.id
             WHERE usuarios.id = :usuario_id
             ORDER BY noticias.fecha_publicacion DESC";
@@ -29,4 +29,3 @@ if (isset($_GET['usuario_id'])) {
     // Si no se recibió un ID de usuario, retornar un mensaje de error
     echo json_encode(array('error' => 'No se proporcionó un ID de usuario.'));
 }
-?>

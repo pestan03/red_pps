@@ -1,4 +1,4 @@
-<?
+<?php
 include_once './conexion.php';
 // Código PHP para eliminar la cookie de sesión
 if (isset($_COOKIE['cookie_session'])) {
@@ -9,6 +9,3 @@ if (isset($_COOKIE['cookie_session'])) {
     header("Location: ../index.php");
     exit;
 }
-
-
-?>
