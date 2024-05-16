@@ -28,10 +28,11 @@ jobs:
         with:
           php-version: '8.3'
           extensions: imagick, swoole
-
+    
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
-
+      - name: instalar phpunit
+        run: composer require --dev phpunit/phpunit
       - name: Run PHPUnit tests
         run: vendor/bin/phpunit html/tests/pruebasRegistro.php
 

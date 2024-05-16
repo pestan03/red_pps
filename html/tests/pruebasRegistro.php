@@ -1,43 +1,38 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-require_once('/home/runner/work/red_pps/red_pps/html/php/funciones.php'); // Asegúrate de que esta ruta es correcta y apunta al archivo que contiene la clase Funciones
+require_once __DIR__ . '/../php/funciones.php';  // Ajusta la ruta al archivo funciones.php
 
-class PruebasRegistro extends TestCase
-{
-    public function testValidarContrasena()
-    {
-        // Pruebas para la función validar_contraseña
-        
-        // Caso: Contraseña válida
-        $this->assertTrue(Funciones::validar_contrasena("Contraseña1#"));
-        
-        // Caso: Contraseña demasiado corta
-        $this->assertFalse(Funciones::validar_contrasena("short1#"));
-        
-        // Caso: Contraseña sin mayúsculas
-        $this->assertFalse(Funciones::validar_contrasena("minuscula1#"));
-        
-        // Caso: Contraseña sin minúsculas
-        $this->assertFalse(Funciones::validar_contrasena("MAYUSCULA1#"));
-        
-        // Caso: Contraseña sin dígitos
-        $this->assertFalse(Funciones::validar_contrasena("SoloLetras#"));
-        
-        // Caso: Contraseña sin caracteres especiales
-        $this->assertFalse(Funciones::validar_contrasena("MissingSpecialChar1"));
+class FuncionesTest extends TestCase {
+    public function testComprobarDniLetra() {
+        $tests = [
+            '12345678Z' => true,   // Ejemplo de un DNI correcto
+            '12345678A' => false,  // Ejemplo de un DNI incorrecto
+            '87654321X' => true,   // Otro ejemplo de un DNI correcto
+            '87654321B' => false,  // Otro ejemplo de un DNI incorrecto
+        ];
+
+        foreach ($tests as $dni => $expected) {
+            $result = Funciones::comprobar_dni_letra($dni);
+            $this->assertEquals($expected, $result, "Failed asserting that $dni is " . ($expected ? 'valid' : 'invalid'));
+        }
     }
-    
-    public function testComprobarDniLetra()
-    {
-        // Caso: DNI válido
-        $this->assertTrue(Funciones::comprobar_dni_letra("12345678Z"));
 
-        // Caso: DNI con letra incorrecta
-        $this->assertFalse(Funciones::comprobar_dni_letra("12345678A"));
+    public function testValidarContrasena() {
+        $tests = [
+            'Password123!' => true,     // Contraseña válida
+            'password123!' => false,    // Falta mayúscula
+            'PASSWORD123!' => false,    // Falta minúscula
+            'Password!'    => false,    // Falta dígito
+            'Password123'  => false,    // Falta carácter especial
+            'Passw1!'      => false,    // Menos de 8 caracteres
+            'ValidPass123$'=> true,     // Otra contraseña válida
+        ];
 
-        // Caso: DNI con letra correcta
-        $this->assertTrue(Funciones::comprobar_dni_letra("87654321R"));
+        foreach ($tests as $password => $expected) {
+            $result = Funciones::validar_contrasena($password);
+            $this->assertEquals($expected, $result, "Failed asserting that '$password' is " . ($expected ? 'valid' : 'invalid'));
+        }
     }
 }
 ?>
