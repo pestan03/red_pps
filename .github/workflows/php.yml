@@ -43,7 +43,9 @@ jobs:
       - name: Levantar contenedor Apache PHP
         run: docker run -d --name php-8.2-apache -p 8000:80 pestan/red_pps:php-8.2-apache
       - name: ps 2
-        run: docker ps 
+        run: docker ps -a
+      - name: logs mysql
+        run: docker logs mysql-8.3.0
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
         with:
