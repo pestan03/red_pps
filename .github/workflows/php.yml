@@ -43,6 +43,8 @@ jobs:
         run: docker ps -a
       - name: logs mysql
         run: docker logs mysql-8.3.0
+      - name: curl localhost
+        run: curl http://localhost
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
         with:
