@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     env:
-        DB_HOST: 172.24.0.2
+        DB_HOST: db
         DB_DATABASE: red
         DB_USERNAME: root
         DB_PASSWORD: root_password
@@ -40,5 +40,7 @@ jobs:
       - name: Iniciar servicios Docker
         run: docker-compose up -d
 
+      - name: Ver contenedor iniciados
+        run: docker ps
       - name: Run test suite
         run: vendor/bin/phpunit html/tests/pruebasRegistro.php
