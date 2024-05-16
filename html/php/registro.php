@@ -23,7 +23,7 @@ try {
             echo "El nombre de usuario ya está en uso.";
         } else {
             // Comprobar la fortaleza de la contraseña utilizando la función validar_contraseña
-            if (Funciones::validar_contraseña($pass)) {
+            if (Funciones::validar_contrasena($pass)) {
                 // Convertir la contraseña a hash
                 $hashed_password = hash('sha256', $pass);
 

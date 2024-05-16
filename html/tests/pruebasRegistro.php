@@ -9,22 +9,22 @@ class PruebasRegistro extends TestCase
         // Pruebas para la función validar_contraseña
         
         // Caso: Contraseña válida
-        $this->assertTrue(Funciones::validar_contraseña("Contraseña1#"));
+        $this->assertTrue(Funciones::validar_contrasena("Contraseña1#"));
         
         // Caso: Contraseña demasiado corta
-        $this->assertFalse(Funciones::validar_contraseña("short1#"));
+        $this->assertFalse(Funciones::validar_contrasena("short1#"));
         
         // Caso: Contraseña sin mayúsculas
-        $this->assertFalse(Funciones::validar_contraseña("minuscula1#"));
+        $this->assertFalse(Funciones::validar_contrasena("minuscula1#"));
         
         // Caso: Contraseña sin minúsculas
-        $this->assertFalse(Funciones::validar_contraseña("MAYUSCULA1#"));
+        $this->assertFalse(Funciones::validar_contrasena("MAYUSCULA1#"));
         
         // Caso: Contraseña sin dígitos
-        $this->assertFalse(Funciones::validar_contraseña("SoloLetras#"));
+        $this->assertFalse(Funciones::validar_contrasena("SoloLetras#"));
         
         // Caso: Contraseña sin caracteres especiales
-        $this->assertFalse(Funciones::validar_contraseña("MissingSpecialChar1"));
+        $this->assertFalse(Funciones::validar_contrasena("MissingSpecialChar1"));
     }
     
     public function testComprobarDniLetra()
