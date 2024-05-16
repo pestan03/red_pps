@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     env:
-        DB_HOST: db
+        DB_HOST: 172.24.0.2
         DB_DATABASE: red
         DB_USERNAME: root
         DB_PASSWORD: root_password
