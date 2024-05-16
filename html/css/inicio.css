@@ -212,7 +212,6 @@ textarea {
     font-weight: bold;
     font-size: 18px;
     margin-bottom: 10px;
-    margin: 0;
     color: #333;
 }
 
@@ -276,13 +275,7 @@ textarea {
     font-size: 20px;
 }
 
-.boton-comentario:hover {
-    background-color: #0056b3;
-}
 
-.boton-comentario i {
-    font-size: 20px;
-}
 
 
 @media only screen and (max-width: 600px) {
@@ -365,11 +358,10 @@ textarea {
     border-radius: 5px;
     font-size: 18px;
     cursor: pointer;
-    margin-top: 20px;
     width: 100%;
     /* Ocupa todo el ancho disponible */
     max-width: 200px;
-    margin: 0 auto;
+    margin: 20px auto 0 auto;
 }
 
 input[type="text"],
