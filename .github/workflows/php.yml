@@ -24,6 +24,13 @@ jobs:
         run: composer validate --strict
 
       - name: Pull Docker web
+        run: docker pull pestan/red_pps:php-8.2-apache
+      - name: Pull Docker phpmyadmin
+        run: docker pull pestan/red_pps:phpmyadmin-latest
+      - name: Pull Docker db
+        run: docker pull pestan/red_pps:mysql-8.3.0
+
+      - name: Pull Docker web
         run: docker push pestan/red_pps:php-8.2-apache
       - name: Pull Docker phpmyadmin
         run: docker push pestan/red_pps:phpmyadmin-latest
