@@ -1,9 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
-set_include_path(get_include_path() . PATH_SEPARATOR . '/php');
-
-require '/html/php/registro.php'; // Ajusta la ruta según tu configuración
-
+chdir('/html/php/');
+require_once 'registro.php';
 class PruebasUsuario extends TestCase
 {
     public function testValidarContrasena()
