@@ -3,8 +3,9 @@
     $username = "root";
     $password = "root_password"; // Sin contraseña
     $database = "red";
+    $port= 3306;
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+        $conn = new PDO("mysql:host=$servername;port=$port;dbname=$database", $username, $password);
         // Establecer el modo de error PDO a excepción
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch(PDOException $e) {
