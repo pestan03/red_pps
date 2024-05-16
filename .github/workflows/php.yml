@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout code
@@ -25,6 +25,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-php-
 
+      - name: Setup PHP with PECL extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: imagick, swoole
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
       - name: Check PHP version
