@@ -1,4 +1,4 @@
-name: PHP Composer and PHPUnit
+name: Build and Test
 
 on:
   push:
@@ -6,44 +6,34 @@ on:
       - '*'
 
 jobs:
-  build:
+  build_and_test:
+    name: Build and Test
     runs-on: ubuntu-20.04
-    env:
-        DB_HOST: db
-        DB_DATABASE: red
-        DB_USERNAME: root
-        DB_PASSWORD: root_password
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        
+
       - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u pestan --password-stdin
+        run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
 
       - name: Validate composer.json and composer.lock
         run: composer validate --strict
 
-      - name: Pull Docker web
-        run: docker pull pestan/red_pps:php-8.2-apache
-      - name: Pull Docker phpmyadmin
-        run: docker pull pestan/red_pps:phpmyadmin-latest
-      - name: Pull Docker db
-        run: docker pull pestan/red_pps:mysql-8.3.0
+      - name: Build and Push Docker web image
+        run: |
+          docker build -t pestan/red_pps:php-8.2-apache .
+          docker push pestan/red_pps:php-8.2-apache
 
-      - name: Pull Docker web
-        run: docker push pestan/red_pps:php-8.2-apache
-      - name: Pull Docker phpmyadmin
-        run: docker push pestan/red_pps:phpmyadmin-latest
-      - name: Pull Docker db
-        run: docker push pestan/red_pps:mysql-8.3.0
-        
-      - name: Pull Docker web
-        run: docker run pestan/red_pps:php-8.2-apache
-      - name: Pull Docker phpmyadmin
-        run: docker run pestan/red_pps:phpmyadmin-latest
-      - name: Pull Docker db
-        run: docker run pestan/red_pps:mysql-8.3.0
-        
+      - name: Build and Push Docker phpmyadmin image
+        run: |
+          docker build -t pestan/red_pps:phpmyadmin-latest .
+          docker push pestan/red_pps:phpmyadmin-latest
+
+      - name: Build and Push Docker db image
+        run: |
+          docker build -t pestan/red_pps:mysql-8.3.0 .
+          docker push pestan/red_pps:mysql-8.3.0
+
       - name: Cache Composer packages
         id: composer-cache
         uses: actions/cache@v2
@@ -58,8 +48,105 @@ jobs:
         with:
           php-version: '8.3'
           extensions: imagick, swoole
+
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
-        
+
       - name: Run test suite
         run: vendor/bin/phpunit html/tests/pruebasRegistro.php
+
+
+
+
+
+
+
+# name: PHP Composer and PHPUnit
+
+# on:
+  # push:
+    # branches:
+      # - '*'
+
+# jobs:
+  # build:
+    # runs-on: ubuntu-20.04
+    # env:
+        # DB_HOST: db
+        # DB_DATABASE: red
+        # DB_USERNAME: root
+        # DB_PASSWORD: root_password
+    # steps:
+      # - name: Checkout code
+        # uses: actions/checkout@v2
+        
+      # - name: Log in to Docker Hub
+        # run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u ${{secrets.DOCKER_USER}} --password-stdin
+
+      # - name: Validate composer.json and composer.lock
+        # run: composer validate --strict
+
+      # - name: Pull Docker web
+        # run: docker build . pestan/red_pps:php-8.2-apache
+      # - name: Pull Docker phpmyadmin
+        # run: docker build . pestan/red_pps:phpmyadmin-latest
+      # - name: Pull Docker db
+        # run: docker build . pestan/red_pps:mysql-8.3.0
+
+      # - name: Push Docker web
+        # run: docker push pestan/red_pps:php-8.2-apache
+      # - name: Push Docker phpmyadmin
+        # run: docker push pestan/red_pps:phpmyadmin-latest
+      # - name: Push Docker db
+        # run: docker push pestan/red_pps:mysql-8.3.0
+        
+      # # - name: Run Docker web
+        # # run: docker run pestan/red_pps:php-8.2-apache
+      # # - name: Run Docker phpmyadmin
+        # # run: docker run pestan/red_pps:phpmyadmin-latest
+      # # - name: Run Docker db
+        # # run: docker run pestan/red_pps:mysql-8.3.0
+  # deploy:
+    # needs: build
+    # runs-on: ubuntu-20.04
+    # steps:
+      # -name 
+    
+      # - name: Cache Composer packages
+        # id: composer-cache
+        # uses: actions/cache@v2
+        # with:
+          # path: vendor
+          # key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          # restore-keys: |
+            # ${{ runner.os }}-php-
+
+      # - name: Setup PHP with PECL extension
+        # uses: shivammathur/setup-php@v2
+        # with:
+          # php-version: '8.3'
+          # extensions: imagick, swoole
+      # - name: Install dependencies
+        # run: composer install --prefer-dist --no-progress
+        
+      # - name: Run test suite
+        # run: vendor/bin/phpunit html/tests/pruebasRegistro.php
+        
+# name: Levantar Contenedores Docker
+
+# on:
+  # push:
+    # branches:
+      # - master
+
+# jobs:
+  # levantar_contenedores:
+    # name: Levantar Contenedores
+    # runs-on: ubuntu-latest
+    # steps:
+      # - name: Levantar contenedor MySQL
+        # run: docker run -d --name mysql_container pestan/red_pps:mysql-8.3.0
+      # - name: Levantar contenedor PHPMyAdmin
+        # run: docker run -d --name phpmyadmin_container -p 8080:80 pestan/red_pps:phpmyadmin-latest
+      # - name: Levantar contenedor Apache PHP
+        # run: docker run -d --name apache_php_container -p 8000:80 pestan/red_pps:php-8.2-apache
