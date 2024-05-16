@@ -1,6 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
-require_once '/html/php/registro.php';
+require_once 'registro.php';
 class PruebasUsuario extends TestCase
 {
     public function testValidarContrasena()
