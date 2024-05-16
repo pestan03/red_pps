@@ -8,7 +8,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
-
+    env:
+        DB_HOST: db
+        DB_DATABASE: red
+        DB_USERNAME: root
+        DB_PASSWORD: root_password
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -32,8 +36,7 @@ jobs:
           extensions: imagick, swoole
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
-      - name: Check PHP version
-        run: php -v
+
       - name: Run test suite
         run: |
           export PHPUNIT=vendor/bin/phpunit
