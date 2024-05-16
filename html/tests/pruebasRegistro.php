@@ -1,6 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
-include("../php/funciones.php"); // Asegúrate de que esta ruta es correcta y apunta al archivo que contiene la clase Funciones
+include("/home/runner/work/red_pps/red_pps/html/php/funciones.php"); // Asegúrate de que esta ruta es correcta y apunta al archivo que contiene la clase Funciones
 
 class PruebasRegistro extends TestCase
 {
