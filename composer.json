@@ -1,5 +1,5 @@
 {
-    "name": "myvendor/myproject",
+    "name": "pestan03/red_pps",
     "description": "A short description of my project",
     "require": {
         "php": "^8.2",
@@ -20,5 +20,6 @@
         "platform": {
             "php": "8.2.0"
         }
-    }
+    },
+    "license": "proprietary"
 }
