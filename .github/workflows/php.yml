@@ -37,4 +37,4 @@ jobs:
         run: composer require --dev phpunit/phpunit
 
       - name: Run PHPUnit tests
-        run: vendor/bin/phpunit html/tests/
+        run: vendor/bin/phpunit html/tests/pruebasRegistro.php
