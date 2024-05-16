@@ -37,6 +37,13 @@ jobs:
       - name: Pull Docker db
         run: docker push pestan/red_pps:mysql-8.3.0
         
+      - name: Pull Docker web
+        run: docker run pestan/red_pps:php-8.2-apache
+      - name: Pull Docker phpmyadmin
+        run: docker run pestan/red_pps:phpmyadmin-latest
+      - name: Pull Docker db
+        run: docker run pestan/red_pps:mysql-8.3.0
+        
       - name: Cache Composer packages
         id: composer-cache
         uses: actions/cache@v2
@@ -54,10 +61,5 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
         
-      - name: Iniciar servicios Docker
-        run: docker-compose up
-
-      - name: Ver contenedor iniciados
-        run: docker ps -a
       - name: Run test suite
         run: vendor/bin/phpunit html/tests/pruebasRegistro.php
