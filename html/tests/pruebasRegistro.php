@@ -1,7 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
-chdir('/html/php/');
-require_once 'registro.php';
+require_once '/html/php/registro.php';
 class PruebasUsuario extends TestCase
 {
     public function testValidarContrasena()

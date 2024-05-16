@@ -19,6 +19,13 @@
     "config": {
         "platform": {
             "php": "8.3.0"
+        },
+        "process-timeout": 900,
+        "phpunit": {
+            "include-path": [
+                "/html/php/",
+                "/html/"
+            ]
         }
     },
     "license": "proprietary"

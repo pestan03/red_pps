@@ -35,6 +35,10 @@ jobs:
       - name: Check PHP version
         run: php -v
       - name: Run test suite
-        run: ./vendor/bin/phpunit html/
+        run: |
+          export PHPUNIT=vendor/bin/phpunit
+          export PHP_INCLUDE_PATH=/html/php/
+          $PHPUNIT html/tests/pruebasRegistro.php
+
        # Añade esta línea debajo de "name: Run test suite"
       
