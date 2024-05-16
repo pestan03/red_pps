@@ -32,7 +32,8 @@ jobs:
           key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-php-
-
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u ${{secrets.DOCKER_USER}} --password-stdin
       - name: Levantar contenedor MySQL
         run: docker run -d --name mysql-8.3.0 pestan/red_pps:mysql-8.3.0
       - name: Levantar contenedor PHPMyAdmin
