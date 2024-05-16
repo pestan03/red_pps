@@ -40,5 +40,5 @@ jobs:
       - name: Set up environment variables and run tests
         run: |
           export PHPUNIT=vendor/bin/phpunit
-          export PHP_INCLUDE_PATH=/html/php/
+          export PHP_INCLUDE_PATH=html/php/registro.php
           $PHPUNIT html/tests/pruebasRegistro.php
