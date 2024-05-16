@@ -14,7 +14,7 @@ class Funciones {
         // Comparar la letra del DNI calculada con la letra proporcionada
         return $letra_calculada === $letra_dni;
     }
-    public static function validar_contrasena($password) {
+    public static function validarContrasena($password) {
         $es_valida = true;
     
         // La contraseña debe tener al menos 8 caracteres
