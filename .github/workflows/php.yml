@@ -37,5 +37,9 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
 
+      - name: Access container from GitHub Actions
+        run: |
+        # Hacer una solicitud HTTP al contenedor
+        curl http://localhost:8080
       - name: Run test suite
         run: vendor/bin/phpunit html/tests/pruebasRegistro.php
