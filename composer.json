@@ -1,0 +1,24 @@
+{
+    "name": "myvendor/myproject",
+    "description": "A short description of my project",
+    "require": {
+        "php": "^8.2",
+        "ext-mysqli": "*",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "MyProject\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "config": {
+        "platform": {
+            "php": "8.2.0"
+        }
+    }
+}
