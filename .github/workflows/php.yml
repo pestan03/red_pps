@@ -36,6 +36,9 @@ jobs:
           extensions: imagick, swoole
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
+        
+      - name: Iniciar servicios Docker
+        run: docker-compose up -d
 
       - name: Run test suite
         run: vendor/bin/phpunit html/tests/pruebasRegistro.php
