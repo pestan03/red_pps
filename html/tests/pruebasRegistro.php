@@ -1,10 +1,10 @@
 <?php
 use PHPUnit\Framework\TestCase;
-class pruebasRegistro extends TestCase
+require_once (__DIR__ . '/../html/php/registro.php');
+class PruebasRegistro extends TestCase
 {
     public function testValidarContrasena()
     {
-        require_once '../php/registro.php';
         // Pruebas para la función validar_contraseña
         
         // Caso: Contraseña válida
@@ -28,7 +28,6 @@ class pruebasRegistro extends TestCase
     
     public function testComprobarDniLetra()
     {
-        require_once '../php/registro.php';
         // Pruebas para la función comprobar_dni_letra
 
         // Caso: DNI válido
