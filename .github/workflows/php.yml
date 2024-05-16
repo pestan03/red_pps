@@ -44,7 +44,7 @@ jobs:
       - name: logs mysql
         run: docker logs mysql-8.3.0
       - name: curl localhost
-        run: curl http://localhost
+        run: wget http://localhost/php/registro.php
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
         with:
