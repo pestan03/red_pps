@@ -15,6 +15,7 @@ jobs:
 
       - name: Validate composer.json and composer.lock
         run: composer validate --strict
+
       - name: Cache Composer packages
         id: composer-cache
         uses: actions/cache@v2
@@ -23,7 +24,7 @@ jobs:
           key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-php-
           
-      - name: Setup PHP with PECL extension
+      - name: Setup PHP with required extensions
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
@@ -31,13 +32,9 @@ jobs:
     
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
-      - name: instalar phpunit
+
+      - name: Install PHPUnit
         run: composer require --dev phpunit/phpunit
+
       - name: Run PHPUnit tests
         run: vendor/bin/phpunit html/tests/pruebasRegistro.php
-
-
-
-
-
-

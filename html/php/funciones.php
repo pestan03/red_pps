@@ -1,5 +1,5 @@
 
-<?
+<?php
 class Funciones {
     // Función para comprobar la correspondencia DNI+letra
     public static function comprobar_dni_letra($dni_completo) {
