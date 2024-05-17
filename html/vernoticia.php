@@ -1,6 +1,5 @@
 <?php
 include_once './php/conexion.php';
-
 // Verificar si se proporcionó una cookie de sesión
 if (!isset($_COOKIE['cookie_session'])) {
     header('Location: ../iniciarsesion.html');
