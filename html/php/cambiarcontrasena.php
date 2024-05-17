@@ -51,3 +51,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Por favor, complete todos los campos.";
     }
 }
+?>

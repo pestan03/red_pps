@@ -33,7 +33,6 @@ if (isset($_GET['q'])) {
             echo '</figure>';
             echo '</div>';
         }
-
     } else {
         // Si no se encontraron resultados, mostrar un mensaje
         echo '<div class="resultados">No se encontraron resultados.</div>';
@@ -45,17 +44,14 @@ if (isset($_GET['q'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/buscar.css">
     <title>Document</title>
 </head>
-
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="index.js"></script>
 </body>
-
 </html>

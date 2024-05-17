@@ -18,6 +18,7 @@ function borrarCookie() {
     console.log("se ha llegado a borrarcookie");
     window.location.reload();
 }
+
 window.addEventListener('keydown', function (event) {
     // Verificar si se presionó la tecla R y si al mismo tiempo se presionó Ctrl (o Cmd en Mac)
     if ((event.key === 'r' || event.key === 'R') && (event.ctrlKey || event.metaKey)) {
@@ -25,6 +26,7 @@ window.addEventListener('keydown', function (event) {
         borrarCookie();
     }
 });
+
 // Espera a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function () {
     // Selecciona todos los elementos con la clase 'mensaje-texto'
@@ -45,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-
 
 document.addEventListener('DOMContentLoaded', function () {
     // Selecciona todos los elementos con la clase 'mensaje-texto'
@@ -78,9 +79,6 @@ function hideDropdown() {
     dropdown.classList.remove("show");
 }
 
-
-
-
 //FUNCION DE VALIDACION DE PASSWORD
 function validarPassword() {
     const password = document.getElementById("pass").value;
@@ -98,15 +96,11 @@ function validarPassword() {
     }
 }
 
-
-
 // Obtén la referencia a la imagen
 function selectImage() {
     const fileInput = document.getElementById('imagen');
     fileInput.click();
 }
-
-
 
 //BUSCADOR
 $(document).ready(function () {
@@ -145,7 +139,6 @@ $(document).ready(function () {
     });
 });
 
-
 //superposicion resultados busqueda
 document.getElementById('search-form').addEventListener('submit', function (event) {
     event.preventDefault(); // Evitar que el formulario se envíe
@@ -167,7 +160,6 @@ document.getElementById('search-form').addEventListener('submit', function (even
         });
 });
 
-
 // FUNCION FILTRADO MENSAJES POR USUARIO
 function redirectToIndex(userId) {
     // Actualizar la URL en la barra de direcciones
@@ -181,12 +173,13 @@ function redirectToIndex(userId) {
     $.ajax({
         url: newUrl,
         type: 'GET',
-        success: function(response) {
+        success: function (response) {
             // Actualizar el contenido de la página con la respuesta de la solicitud AJAX
             document.body.innerHTML = response;
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error('Error en la solicitud AJAX:', error);
         }
     });
 }
+
