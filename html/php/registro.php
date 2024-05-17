@@ -1,19 +1,19 @@
 <?php
 include_once './conexion.php';
-include_once './funciones.php';
+include_once '/funciones.php';
 
 try {
     // Crear conexión PDO
     // Establecer el modo de error PDO a excepción
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Verificar si se ha enviado el formulario
+    // Verifica si se ha enviado el formulario
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Obtener los valores enviados por el formulario
         $user = $_POST['username'];
         $pass = $_POST['password'];
         $dni = $_POST['dni'];
-        $email = $_POST['email'];
+        $email=$_POST['email'];
 
         // Preparar consulta para verificar si el nombre de usuario ya existe
         $stmt_check_user = $conn->prepare("SELECT * FROM usuarios WHERE user = ?");
@@ -47,5 +47,9 @@ try {
 } catch(PDOException $e) {
     echo "Error de conexión a la base de datos: " . $e->getMessage();
 }
+
+// Función para validar la fortaleza de la contraseña
+
 ?>
 <script src="index.js"></script>
+

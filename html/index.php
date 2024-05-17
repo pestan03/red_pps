@@ -21,11 +21,13 @@
             </form>
         </div>
 
+
         <div id="botonesSesion" class="botones-sesion">
             <?php
+            // Incluye el archivo de conexión a la base de datos aquí
             include_once './php/conexion.php';
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+            // Evita la inyección SQL preparando la consulta
             if (isset($_COOKIE['cookie_session'])) {
                 $valor_cookie = $_COOKIE['cookie_session'];
                 $sql_session = "SELECT * FROM usuarios WHERE id = :id";
@@ -55,6 +57,7 @@
 
     <section class="mensajes">
         <?php
+        // mostrar mensajes por busqueda de usuario
         if (isset($_GET['idBusqueda'])) {
             $usuario_id = $_GET['idBusqueda'];
             $sql_busqueda = "SELECT noticias.id_noticia, noticias.titulo_noticia, noticias.contenido_noticia, noticias.fecha_publicacion, usuarios.user, usuarios.id AS usuario_id, usuarios.foto_perfil
@@ -84,6 +87,7 @@
                 echo '</div>';
             }
         } else {
+            // Mostrar todos los mensajes
             $sql = "SELECT noticias.id_noticia, noticias.titulo_noticia, noticias.contenido_noticia, noticias.fecha_publicacion, usuarios.user, usuarios.id AS usuario_id, usuarios.foto_perfil
         FROM noticias
         INNER JOIN usuarios ON noticias.id_usuario = usuarios.id
@@ -130,12 +134,13 @@
                         <input type="file" id="imagen" name="imagen" accept="image/*">
                     </div>
                     <button class="publish-button" type="submit">Publicar</button>
-                    </form>
+                </form>
             </center>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./index.js" defer></script>
+
 </body>
 
 </html>

@@ -1,65 +1,49 @@
-<?php
-// File header
-/**
- * File: funciones.php
- * Description: Contains utility functions.
- */
 
+<?php
 class Funciones {
-    /**
-     * Function to validate DNI (Spanish identification number) with letter.
-     *
-     * @param string $dni_completo The complete DNI including letter.
-     * @return bool True if the letter matches the calculated one, false otherwise.
-     */
+    // Función para comprobar la correspondencia DNI+letra
     public static function comprobarDniLetra($dni_completo) {
-        // Extract only the numbers from the DNI
+        // Extraer solo los números del DNI
         $numeros_dni = substr($dni_completo, 0, -1);
         $letra_dni = strtoupper(substr($dni_completo, -1));
-        // Calculate the letter of the DNI
+        // Calcular la letra del DNI
         $letras = 'TRWAGMYFPDXBNJZSQVHLCKE';
         $indice = $numeros_dni % 23;
         $letra_calculada = $letras[$indice];
 
-        // Compare the calculated DNI letter with the provided one
+        // Comparar la letra del DNI calculada con la letra proporcionada
         return $letra_calculada === $letra_dni;
     }
-
-    /**
-     * Function to validate password strength.
-     *
-     * @param string $password The password to validate.
-     * @return bool True if the password meets the criteria, false otherwise.
-     */
     public static function validarContrasena($password) {
         $es_valida = true;
     
-        // Password must have at least 8 characters
+        // La contraseña debe tener al menos 8 caracteres
         if (strlen($password) < 8) {
             $es_valida = false;
         }
     
-        // Password must contain at least one uppercase letter
+        // La contraseña debe contener al menos una letra mayúscula
         if (!preg_match('/[A-Z]/', $password)) {
             $es_valida = false;
         }
     
-        // Password must contain at least one lowercase letter
+        // La contraseña debe contener al menos una letra minúscula
         if (!preg_match('/[a-z]/', $password)) {
             $es_valida = false;
         }
     
-        // Password must contain at least one numeric digit
+        // La contraseña debe contener al menos un dígito numérico
         if (!preg_match('/[0-9]/', $password)) {
             $es_valida = false;
         }
     
-        // Password must contain at least one special character
+        // La contraseña debe contener al menos un carácter especial
         if (!preg_match('/[^a-zA-Z0-9]/', $password)) {
             $es_valida = false;
         }
     
         return $es_valida;
     }
+    
 }
 ?>

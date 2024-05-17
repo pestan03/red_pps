@@ -351,6 +351,7 @@ textarea {
 .publish-button {
     background-color: #007bff;
     /* Color azul brillante */
+    
     color: white;
     padding: 15px 30px;
     border: none;
@@ -452,4 +453,5 @@ label {
 
 .resultados-individuales a {
     text-decoration: none;
+    
 }

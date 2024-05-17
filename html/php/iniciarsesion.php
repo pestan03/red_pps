@@ -1,24 +1,19 @@
 <?php
-/**
- * FILE: iniciarsesion.php
- * DESCRIPTION: Handles user login.
- */
-
-// Include the database connection file
+// Conexión a la base de datos (modifica estos valores según tu configuración)
 include_once './conexion.php';
 
-// Create connection
-// Set PDO error mode to exception
+// Crear conexión
+// Establecer el modo de error PDO a excepción
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Check if the form has been submitted
+// Verifica si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if the username and password fields are not empty
+    // Verifica si los campos de usuario y contraseña no están vacíos
     if (!empty($_POST['user']) && !empty($_POST['pass'])) {
         $user = $_POST['user'];
         $pass = $_POST['pass'];
 
-        // Query to retrieve the password hash from the database
+        // Consulta para obtener el hash de la contraseña desde la base de datos
         $sql = "SELECT id, user, password FROM usuarios WHERE user = :user";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':user', $user);
@@ -28,28 +23,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             $stored_password = $row['password'];
 
-            // Calculate the SHA-256 hash of the entered password
+            // Calcula el hash SHA-256 de la contraseña ingresada
             $hashed_password = hash('sha256', $pass);
 
-            // Check if the hashes match
+            // Verifica si los hashes coinciden
             if ($hashed_password === $stored_password) {
-                // Start session and redirect the user to a welcome page
+                // Iniciar sesión y redirigir al usuario a una página de bienvenida
                 session_start();
-                setcookie("cookie_session", $row['id'], time() + 3600, "/");
+                setcookie("cookie_session", $row['id'], time() + 3600, "/");             
                 header("Location: ../index.php");
             } else {
-                // If the credentials are incorrect, display an error message
-                header("Location: {$_SERVER['HTTP_REFERER']}");
+                // Si las credenciales son incorrectas, muestra un mensaje de error
+                header("Location:  {$_SERVER['HTTP_REFERER']}");
             }
         } else {
-            // If the user does not exist in the database, display an error message
-            header("Location: {$_SERVER['HTTP_REFERER']}");
+            // Si el usuario no existe en la base de datos, muestra un mensaje de error
+            header("Location:  {$_SERVER['HTTP_REFERER']}");
         }
     } else {
-        // If the fields are empty, display an error message
+        // Si los campos están vacíos, muestra un mensaje de error
         echo "Por favor, complete todos los campos.";
     }
 }
 
-// If there is no active session, display the login form
+
+
+// Si no hay sesión iniciada, mostrar el formulario de inicio de sesión
 ?>

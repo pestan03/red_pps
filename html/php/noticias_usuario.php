@@ -1,18 +1,15 @@
 <?php
-/**
- * File: noticias_usuario.php
- * Description: Retrieves news articles associated with a specific user.
- */
+// noticias_usuario.php
 
-// Include the database connection file
+// Incluir el archivo de conexión a la base de datos
 include_once './conexion.php';
 
-// Check if a user ID was received
+// Verificar si se recibió un ID de usuario
 if (isset($_GET['usuario_id'])) {
-    // Get the user ID and sanitize to prevent SQL injection
+    // Obtener el ID de usuario y limpiarlo para evitar inyección de SQL
     $usuario_id = $_GET['usuario_id'];
 
-    // Prepare the SQL query to retrieve news articles from the user
+    // Preparar la consulta SQL para recuperar las noticias del usuario
     $sql = "SELECT noticias.id_noticia, noticias.titulo_noticia, noticias.contenido_noticia, noticias.fecha_publicacion, usuarios.user, usuarios.foto_perfil
             FROM noticias
             INNER JOIN usuarios ON noticias.id_usuario = usuarios.id
@@ -23,12 +20,12 @@ if (isset($_GET['usuario_id'])) {
     $stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
     $stmt->execute();
 
-    // Get the user's news articles
+    // Obtener las noticias del usuario
     $noticias = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Convert the news articles to JSON format and send them back to the client
+    // Convertir las noticias a formato JSON y enviarlas de vuelta al cliente
     echo json_encode($noticias);
 } else {
-    // If no user ID was received, return an error message
+    // Si no se recibió un ID de usuario, retornar un mensaje de error
     echo json_encode(array('error' => 'No se proporcionó un ID de usuario.'));
 }
