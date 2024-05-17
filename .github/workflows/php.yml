@@ -40,3 +40,39 @@ jobs:
         # run: composer run-script test
       - name: Run PHPUnit tests
         run: vendor/bin/phpunit tests
+  sonarcloud:
+    name: SonarCloud Analysis
+    runs-on: ubuntu-20.04
+    needs: run_phpunit_tests
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+
+      - name: SonarCloud Scan
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          sonar-scanner \
+          -Dsonar.organization=pestan03 \
+          -Dsonar.projectKey=red_pps \
+          -Dsonar.sources=. \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.php.tests.reportPath=tests
+
+      - name: Upload SonarCloud results
+        uses: actions/upload-artifact@v2
+        with:
+          name: sonarcloud-report
+          path: .scannerwork
