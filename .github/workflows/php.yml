@@ -52,3 +52,31 @@ jobs:
         env:
           SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}
           
+  dependency-check:
+    name: OWASP Check
+    runs-on: ubuntu-20.04
+    needs: sonarcloud
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Java
+      uses: actions/setup-java@v1
+      with:
+        java-version: '11'
+
+    - name: Install OWASP Dependency-Check
+      run: |
+        wget https://dl.bintray.com/jeremy-long/owasp/dependency-check-6.2.2-release.zip
+        unzip dependency-check-6.2.2-release.zip
+
+    - name: Run OWASP Dependency-Check
+      run: |
+        ./dependency-check/bin/dependency-check.sh --project "myproject" --scan . --format "ALL" --out dependency-check-report
+      continue-on-error: true
+
+    - name: Upload Dependency-Check Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: dependency-check-report
+        path: dependency-check-report

@@ -1,9 +1,13 @@
-<php>
-    <phpunit>
-        <includePath>/html/php/</includePath>
-        <env name="DB_HOST" value="db" />
-        <env name="DB_DATABASE" value="red" />
-        <env name="DB_USERNAME" value="root" />
-        <env name="DB_PASSWORD" value="root_password" />
-    </phpunit>
-</php>
+<plugin>
+    <groupId>org.owasp</groupId>
+    <artifactId>dependency-check-maven</artifactId>
+    <version>6.2.2</version>
+    <executions>
+      <execution>
+        <goals>
+          <goal>check</goal>
+        </goals>
+      </execution>
+    </executions>
+  </plugin>
+  
