@@ -36,8 +36,6 @@ jobs:
       - name: Install PHPUnit
         run: composer require --dev phpunit/phpunit
 
-      # - name: Run PHPUnit tests
-        # run: composer run-script test
       - name: Run PHPUnit tests
         run: vendor/bin/phpunit tests
   sonarcloud:
