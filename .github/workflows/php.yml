@@ -49,3 +49,19 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}
+
+  php_codesniffer:
+    name: PHP_CodeSniffer
+    runs-on: ubuntu-20.04
+    needs: run_phpunit_tests
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup PHP with required extensions
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - name: Install PHP_CodeSniffer
+        run: composer global require "squizlabs/php_codesniffer=*"
+      - name: Check coding standards
+        run: ~/.composer/vendor/bin/phpcs --standard=PSR12 . 
