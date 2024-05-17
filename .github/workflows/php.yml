@@ -47,55 +47,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Setup Java
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'
-          distribution: 'adopt'
-
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-      - name: Install Java
-        run: |
-            sudo apt update
-            sudo apt install openjdk-11-jdk -y
-
-      - name: Download SonarScanner
-        run: |
-            SONAR_SCANNER_VERSION="4.8.0.2856"
-            SONAR_SCANNER_DIR="sonar-scanner-$SONAR_SCANNER_VERSION-linux"
-            SONAR_SCANNER_ZIP="$SONAR_SCANNER_DIR.zip"
-            SONAR_SCANNER_URL="https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/$SONAR_SCANNER_ZIP"
-            wget $SONAR_SCANNER_URL
-            unzip $SONAR_SCANNER_ZIP
-            sudo mv $SONAR_SCANNER_DIR /opt/sonar-scanner
-
-      - name: Set up SonarScanner environment
-        run: |
-            echo "export SONAR_SCANNER_HOME=/opt/sonar-scanner" >> $HOME/.bashrc
-            echo "export PATH=\$PATH:\$SONAR_SCANNER_HOME/bin" >> $HOME/.bashrc
-            source $HOME/.bashrc
-
-      - name: Verify SonarScanner installation
-        run: sonar-scanner -v
-        
       - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          sonar-scanner \
-          -Dsonar.organization=pestan03 \
-          -Dsonar.projectKey=pestan03_red_pps \
-          -Dsonar.sources=. \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.php.tests.reportPath=tests
-
-      - name: Upload SonarCloud results
-        uses: actions/upload-artifact@v2
-        with:
-          name: sonarcloud-report
-          path: .scannerwork
+          SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}
