@@ -61,8 +61,8 @@ jobs:
           key: ${{ runner.os }}-sonar
       - name: Install Java
         run: |
-        sudo apt update
-        sudo apt install openjdk-11-jdk -y
+            sudo apt update
+            sudo apt install openjdk-11-jdk -y
 
       - name: Download SonarScanner
         run: |
@@ -74,14 +74,14 @@ jobs:
             unzip $SONAR_SCANNER_ZIP
             sudo mv $SONAR_SCANNER_DIR /opt/sonar-scanner
 
-    - name: Set up SonarScanner environment
-      run: |
-        echo "export SONAR_SCANNER_HOME=/opt/sonar-scanner" >> $HOME/.bashrc
-        echo "export PATH=\$PATH:\$SONAR_SCANNER_HOME/bin" >> $HOME/.bashrc
-        source $HOME/.bashrc
+      - name: Set up SonarScanner environment
+        run: |
+            echo "export SONAR_SCANNER_HOME=/opt/sonar-scanner" >> $HOME/.bashrc
+            echo "export PATH=\$PATH:\$SONAR_SCANNER_HOME/bin" >> $HOME/.bashrc
+            source $HOME/.bashrc
 
-    - name: Verify SonarScanner installation
-      run: sonar-scanner -v
+      - name: Verify SonarScanner installation
+        run: sonar-scanner -v
         
       - name: SonarCloud Scan
         env:
