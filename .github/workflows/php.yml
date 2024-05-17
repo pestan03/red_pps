@@ -72,7 +72,7 @@ jobs:
         run: |
           sonar-scanner \
           -Dsonar.organization=pestan03 \
-          -Dsonar.projectKey=red_pps \
+          -Dsonar.projectKey=pestan03_red_pps \
           -Dsonar.sources=. \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.php.tests.reportPath=tests
