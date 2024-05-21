@@ -1,6 +1,7 @@
 <?php
 include_once './conexion.php';
-include_once '/funciones.php';
+include_once './funciones.php';
+
 
 try {
     // Crear conexión PDO

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: May 21, 2024 at 02:41 PM
+-- Generation Time: May 21, 2024 at 03:07 PM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.8
 
@@ -32,8 +32,16 @@ CREATE TABLE `usuarios` (
   `user` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `dni` varchar(20) NOT NULL,
-  `email` varchar(100) NOT NULL
+  `email` varchar(100) NOT NULL,
+  `foto_perfil` longblob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `user`, `password`, `dni`, `email`, `foto_perfil`) VALUES
+(1, 'pestan', '3d0b3bb6a39b7872df781755a0ba99ae112b771fbf0329b6ed0cdf01d2f92341', '23874041h', 'pabloestan@gmail.com', NULL);
 
 --
 -- Indexes for dumped tables
@@ -53,7 +61,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
