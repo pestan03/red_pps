@@ -91,18 +91,18 @@ try {
                                     echo '<img src="./fotos/userblanco.png" class="foto-perfil">';
                                 }
                                 ?>
-                                <p class="nombre-usuario-noticia"><?= htmlspecialchars($noticia['user']) ?></p>
+                                <p class="nombre-usuario-noticia"><?php htmlspecialchars($noticia['user']) ?></p>
                             </div>
-                            <p class="noticia-titulo"><?= htmlspecialchars($noticia['titulo_noticia']) ?></p>
-                            <p class="noticia-contenido"><?= htmlspecialchars($noticia['contenido_noticia']) ?></p>
-                            <p class="noticia-fecha"><?= htmlspecialchars($noticia['fecha_publicacion']) ?></p>
+                            <p class="noticia-titulo"><?php htmlspecialchars($noticia['titulo_noticia']) ?></p>
+                            <p class="noticia-contenido"><?php htmlspecialchars($noticia['contenido_noticia']) ?></p>
+                            <p class="noticia-fecha"><?php htmlspecialchars($noticia['fecha_publicacion']) ?></p>
                             <?php
                             if (!empty($noticia['imagen'])) {
                                 echo '<img style="max-width: 300px; max-height:100px; " src="data:image/jpeg;base64,' . base64_encode($noticia['imagen']) . '">';
                             }
                             ?>
                             <form class="form-comentario" action="php/comentar.php" method="post">
-                                <input type="hidden" name="idnoticia" value="<?= htmlspecialchars($noticia_id) ?>">
+                                <input type="hidden" name="idnoticia" value="<?php htmlspecialchars($noticia_id) ?>">
                                 <div class="contenedor-comentario">
                                     <textarea name="comentario" class="area_comentario" placeholder="Comenta..."></textarea>
                                     <button class="boton-comentario" type="submit"><i class="fas fa-paper-plane"></i></button>
@@ -122,7 +122,7 @@ try {
                         if ($stmt_comentario->rowCount() > 0) {
                             while ($row_comentario = $stmt_comentario->fetch(PDO::FETCH_ASSOC)) {
                                 ?>
-                                <div class="comentario" data-comentario-id="<?= htmlspecialchars($row_comentario['comentario_id']) ?>">
+                                <div class="comentario" data-comentario-id="<? htmlspecialchars($row_comentario['comentario_id']) ?>">
                                     <div class="div-perfil-comentario">
                                         <?php
                                         if (!empty($row_comentario['foto_perfil'])) {
@@ -131,10 +131,10 @@ try {
                                             echo '<img src="./fotos/userblanco.png" class="foto-perfil">';
                                         }
                                         ?>
-                                        <p class="nombre-usuario-comentario"><?= htmlspecialchars($row_comentario['user']) ?></p>
+                                        <p class="nombre-usuario-comentario"><?htmlspecialchars($row_comentario['user']) ?></p>
                                     </div>
-                                    <p class="contenido-comentario"><?= htmlspecialchars($row_comentario['contenido']) ?></p>
-                                    <p class="fecha-envio-comentario"><?= htmlspecialchars($row_comentario['datesent']) ?></p>
+                                    <p class="contenido-comentario"><? htmlspecialchars($row_comentario['contenido']) ?></p>
+                                    <p class="fecha-envio-comentario"><? htmlspecialchars($row_comentario['datesent']) ?></p>
                                 </div>
                                 <?php
                             }

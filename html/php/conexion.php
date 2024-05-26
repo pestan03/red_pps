@@ -2,7 +2,7 @@
     $servername = "db";
     $username = "root";
     $password = "root_password"; // Sin contraseña
-    $database = "red";
+    $database = "id22220192_red";
     $port= 3306;
     try {
         $conn = new PDO("mysql:host=$servername;port=$port;dbname=$database", $username, $password);

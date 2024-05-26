@@ -20,7 +20,9 @@
                 <input class="buscador" type="text" id="busqueda" name="q" placeholder="&#xf002; Buscar usuarios...">
             </form>
         </div>
-
+        <div class="galeria">
+            <a href=""></a>
+        </div>
 
         <div id="botonesSesion" class="botones-sesion">
             <?php

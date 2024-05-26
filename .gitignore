@@ -2,4 +2,4 @@ mysql_data/
 *.sock
 mysql_data/private_key.pem
 mysql_data/private_key.pem
-mysql_data/
+/mysql_data/

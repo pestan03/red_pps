@@ -19,29 +19,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // Verificar si se ha enviado una imagen
         if (isset($_FILES['imagen']) && $_FILES['imagen']['size'] > 0) {
-            // Verificar si el archivo es JPEG y no contiene código malicioso
-            $nombreTempArchivo = $_FILES['imagen']['tmp_name'];
-            $tipoArchivo = $_FILES['imagen']['type'];
-            $tamanoArchivo = $_FILES['imagen']['size'];
-            $extensionArchivo = strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
-            
-            // Verificar la extensión del archivo
-            $extensionesValidas = array("jpeg", "jpg");
-            if (!in_array($extensionArchivo, $extensionesValidas)) {
-                echo "Error: El archivo debe tener extensión .jpeg o .jpg";
-                exit();
-            }
-            
             // Verificar el tipo MIME del archivo
-            if ($tipoArchivo !== "image/jpeg") {
+            $nombreTempArchivo = $_FILES['imagen']['tmp_name'];
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $tipoMIME = finfo_file($finfo, $nombreTempArchivo);
+            finfo_close($finfo);
+
+            // Lista blanca de tipos MIME permitidos
+            $tiposMIMEPermitidos = array("image/jpeg", "image/jpg", "image/png");
+            if (!in_array($tipoMIME, $tiposMIMEPermitidos)) {
                 echo "Error: El archivo no es un JPEG válido.";
-                exit();
-            }
-            
-            // Verificar si el archivo contiene código malicioso
-            $contenidoArchivo = file_get_contents($nombreTempArchivo);
-            if (preg_match("/<\?php|<\?|<script|<html|<iframe/i", $contenidoArchivo)) {
-                echo "Error: El archivo parece contener código malicioso.";
                 exit();
             }
             
