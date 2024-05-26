@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: {$_SERVER['HTTP_REFERER']}");
         exit();
     } else {
-        echo "Error: No se encontró la cookie de sesión.";
+        echo "Error: No se encontró la cookie de sesión. INICIA SESION PARA PODER PUBLICAR NOTICIAS";
     }
 }
 ?>
