@@ -1,7 +1,7 @@
 <?php
     $servername = "db";
-    $username = "root";
-    $password = "root_password"; // Sin contraseña
+    $username = "id22220192_pablo";
+    $password = "pabloESP03@"; // Sin contraseña
     $database = "id22220192_red";
     $port= 3306;
     try {

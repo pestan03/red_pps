@@ -127,17 +127,15 @@
     <div class="overlay">
         <div class="content">
             <div class="close-button"><i class="material-icons">close</i></div>
-            <center>
-                <form action="php/publicarnoticia.php" method="post" enctype="multipart/form-data">
-                    <h2>Publicar Noticia</h2>
-                    <div style="margin-bottom:20px">
-                        <input type="text" name="titulo" style="width:600px; overflow-x:hiden" placeholder="Título de la noticia">
-                        <textarea name="contenido" placeholder="Contenido de la noticia" style="height:200px; width:100%"></textarea>
-                        <input type="file" id="imagen" name="imagen" accept="image/*">
-                    </div>
-                    <button class="publish-button" type="submit">Publicar</button>
-                </form>
-            </center>
+            <form class="form-container" action="php/publicarnoticia.php" method="post" enctype="multipart/form-data">
+                <h2 class="form-title">Publicar Noticia</h2>
+                <div style="margin-bottom:20px">
+                    <input class="form-input" type="text" name="titulo" placeholder="Título de la noticia">
+                    <textarea class="form-textarea" name="contenido" placeholder="Contenido de la noticia"></textarea>
+                    <input class="form-file" type="file" id="imagen" name="imagen" accept="image/*">
+                </div>
+                <button class="publish-button" type="submit">Publicar</button>
+            </form>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
