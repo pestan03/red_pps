@@ -17,7 +17,7 @@
         </div>
         <div class="buscar">
             <form id="search-form" action="./php/buscar.php" method="GET">
-                <input class="buscador" type="text" id="busqueda" name="q" placeholder="&#xf002; Buscar usuarios...">
+                <input class="buscador" type="text" id="busqueda" name="q" placeholder="Buscar usuarios...">
             </form>
         </div>
         <div class="galeria">
