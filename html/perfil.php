@@ -35,7 +35,7 @@
                     echo '<div class="foto-perfil-container">';
                     echo '<img src="data:image/jpeg;base64,' . base64_encode($imagen) . '" style="width:20%; height:auto;"class="foto-perfil" onClick="selectImage()">';
                     echo '</div>';
-                } else {
+                } else { 
                     echo '<div class="foto-perfil-container">';
                     echo '<img src="./fotos/userblanco.png" class="foto-perfil" onClick="selectImage()">';
                     echo '</div>';
@@ -56,7 +56,7 @@
     <form action="/php/procesar_imagen.php" method="post" enctype="multipart/form-data">
         <label for="imagen">Seleccionar imagen de perfil:</label><br>
         <!-- Agrega un input file oculto -->
-        
+
         <input type="file" id="imagen" style="display: none;" name="imagen" accept="image/jpeg, image/png" required>
 
         <input type="submit" id="confirmar" value="CONFIRMAR CAMBIO">
