@@ -1,5 +1,5 @@
 <?php
-    $servername = "db";
+    $servername = "localhost";
     $username = "id22220192_pablo";
     $password = "pabloESP03@"; // Sin contraseña
     $database = "id22220192_red";
