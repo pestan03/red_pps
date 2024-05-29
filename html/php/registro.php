@@ -32,8 +32,11 @@ try {
                 if (Funciones::comprobarDniLetra($dni)) {
                     // Preparar consulta para insertar los datos en la base de datos utilizando consultas preparadas
                     $stmt_insert_user = $conn->prepare("INSERT INTO usuarios (user, password, dni, email) VALUES (?, ?, ?, ?)");
-                    $imagen="./userblanco.png"
-                    $stmt_insert_user->execute([$user, $hashed_password, $dni, $email]);
+                    $stmt_insert_user->bindParam(':user', $user);
+                    $stmt_insert_user->bindParam(':password', $hashed_password);
+                    $stmt_insert_user->bindParam(':dni', $dni);
+                    $stmt_insert_user->bindParam(':email', $email);
+                    $stmt_insert_user->execute();
                     echo '<script type="text/javascript">';
                     echo 'window.location.href="../../index.php";';
                     echo '</script>';

@@ -30,7 +30,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($hashed_password === $stored_password) {
                 // Iniciar sesión y redirigir al usuario a una página de bienvenida
                 session_start();
-                setcookie("cookie_session", $row['id'], time() + 3600, "/");             
+
+                // Configurar las opciones de la cookie
+                $options = [
+                    'expires' => time() + 3600, // 1 hora de expiración
+                    'path' => '/',
+                    'domain' => '', // Dominio actual
+                    'secure' => true, // Solo para HTTPS
+                    'httponly' => true, // Solo accesible a través de HTTP
+                    'samesite' => 'Strict' // Política SameSite Strict
+                ];
+                // creacion de token
+                $session_token = bin2hex(random_bytes(32));
+                setcookie("session_token", $session_token, $options);
+                $_SESSION['session_token'] = $session_token;
+                // Establecer la cookie
+                setcookie("cookie_session", $row['id'], $options);           
                 header("Location: ../index.php");
             } else {
                 // Si las credenciales son incorrectas, muestra un mensaje de error
