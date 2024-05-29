@@ -60,11 +60,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             }
         }else{
-            echo "no se encontro el token";
-        }
+            echo '<script type="text/javascript">';
+            echo 'window.location.href="../php/iniciarsesion.php";';
+            echo '</script>';        }
     } else {
-        echo "Error: No se encontró la cookie de sesión. INICIA SESION PARA PODER PUBLICAR NOTICIAS";
-    }
+        echo '<script type="text/javascript">';
+        echo 'window.location.href="../php/iniciarsesion.php";';
+        echo '</script>';    }
 }
 ?>
 <script src="index.js"></script>
