@@ -11,10 +11,10 @@ try {
 // Verificar si la solicitud es POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_COOKIE['cookie_session'])) {
-        if (isset($_POST['csrf_token'])) {
+        if (isset($_POST['session_token'])) {
 
             // Comparar el token de la solicitud con el token almacenado en la sesión
-            if (hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+            if (hash_equals($_SESSION['session_token'], $_POST['session_token'])) {
                 
                 // Obtener el ID de sesión de la cookie
                 $idsession = $_COOKIE['cookie_session'];

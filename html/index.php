@@ -130,7 +130,7 @@
             <form class="form-container" action="php/publicarnoticia.php" method="post" enctype="multipart/form-data">
                 <h2 class="form-title">Publicar Noticia</h2>
                 <div style="margin-bottom:20px">
-                <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+                <input type="hidden" name="csrf_token" value="<?php echo $_COOKIE['session_token']; ?>">
                     <input class="form-input" type="text" name="titulo" placeholder="Título de la noticia">
                     <textarea class="form-textarea" name="contenido" placeholder="Contenido de la noticia"></textarea>
                     <input class="form-file" type="file" id="imagen" name="imagen" accept="image/*">
