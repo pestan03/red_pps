@@ -17,15 +17,49 @@
         <input type="email" id="email" name="email" required><br>
         
         <label for="password">Contraseña</label><br>
-        <input type="password" id="pass" name="password" oninput="validarPassword()" required><br><br>
-        <span id="passError" style="color: red;"></span><br><br>
+        <input type="password" id="pass" name="password" required><br>
+        <ul id="passError" style="color: red; list-style-type: none; padding-left: 0;"></ul><br><br>
 
         <label for="dni">DNI</label><br>
         <input type="text" id="dni" name="dni" required><br><br>
 
-        <input type="submit" value="Registrarse">
+        <input type="submit" value="Registrarse" id="submitBtn">
     </form>
-    <script src="index.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const passwordField = document.getElementById("pass");
+            const passError = document.getElementById("passError");
+            const submitBtn = document.getElementById("submitBtn");
+
+            passwordField.addEventListener('input', validarPassword);
+
+            function validarPassword() {
+                const password = passwordField.value;
+                passError.innerHTML = '';
+
+                const requirements = [
+                    { regex: /[a-z]/, message: "No cumple con minúsculas." },
+                    { regex: /[A-Z]/, message: "No cumple con mayúsculas." },
+                    { regex: /\d/, message: "No tiene números." },
+                    { regex: /[@$!%*?&]/, message: "No tiene símbolos." },
+                    { regex: /.{12,}/, message: "Debe tener al menos 12 caracteres." }
+                ];
+
+                let isValid = true;
+
+                requirements.forEach(requirement => {
+                    if (!requirement.regex.test(password)) {
+                        const li = document.createElement('li');
+                        li.textContent = requirement.message;
+                        passError.appendChild(li);
+                        isValid = false;
+                    }
+                });
+
+                submitBtn.disabled = !isValid;
+            }
+        });
+    </script>
 </body>
 
 </html>

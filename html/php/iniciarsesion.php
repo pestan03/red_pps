@@ -41,8 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     'samesite' => 'Strict' // Política SameSite Strict
                 ];
                 // creacion de token
-                $session_token = bin2hex(random_bytes(32));
-                setcookie("session_token", $session_token, $options);
                 // Establecer la cookie
                 setcookie("cookie_session", $row['id'], $options);           
                 header("Location: ../index.php");

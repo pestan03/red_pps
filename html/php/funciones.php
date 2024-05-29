@@ -18,7 +18,7 @@ class Funciones {
         $es_valida = true;
     
         // La contraseña debe tener al menos 8 caracteres
-        if (strlen($password) < 8) {
+        if (strlen($password) < 12) {
             $es_valida = false;
         }
     

@@ -4,15 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/iniciarsesion.css">
-    <title>Login</title>
+    <title>Cambiar Contraseña</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-    <form action="php/cambiarcontrasena.php" method="post">
-        <label for="username">Contraseña antigua</label><br>
-        <input type="text" id="user" name="pass_antigua"><br>
-        <label for="password">Contraseña nueva</label><br>
-        <input type="password" id="pass" name="pass_nueva"><br><br>
-        <input type="submit" value="Cambiar">
+    <form id="change-password-form" action="php/cambiarcontrasena.php" method="post">
+        <label for="pass_antigua">Contraseña antigua</label><br>
+        <input type="password" id="pass_antigua" name="pass_antigua" required><br>
+        <label for="pass_nueva">Contraseña nueva</label><br>
+        <input type="password" id="pass_nueva" name="pass_nueva" oninput="validarPassword()" required><br>
+        <div id="passError" class="error"></div>
+        <label for="confirmar_pass_nueva">Confirmar nueva contraseña</label><br>
+        <input type="password" id="confirmar_pass_nueva" name="confirmar_pass_nueva" oninput="validarConfirmacionPassword()" required><br>
+        <div id="confirmPassError" class="error"></div>
+        <input type="submit" id="submitBtn" value="Cambiar" disabled>
     </form>
     <script src="index.js"></script>
 </body>

@@ -21,7 +21,7 @@
             </form>
         </div>
         <div class="galeria">
-            <a href=""></a>
+            <a href="./php/galeria.php">Galeria</a>
         </div>
 
         <div id="botonesSesion" class="botones-sesion">

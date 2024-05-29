@@ -1,15 +1,33 @@
 <?php
-// Conexión a la base de datos (modifica estos valores según tu configuración)
+session_start();
+// Conexión a la base de datos
 include_once './conexion.php';
 
 // Verifica si se ha enviado el formulario de manera segura
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Verifica si los campos de usuario y contraseña no están vacíos
-    if (!empty($_POST['pass_antigua']) && !empty($_POST['pass_nueva'])) {
+    if (!isset($_COOKIE['cookie_session'])) {
+        echo "No se ha iniciado sesión.";
+        exit();
+    }
+    // Verifica si los campos de contraseña no están vacíos
+    if (!empty($_POST['pass_antigua']) && !empty($_POST['pass_nueva']) && !empty($_POST['confirmar_pass_nueva'])) {
         $pass_antigua = $_POST['pass_antigua'];
         $pass_nueva = $_POST['pass_nueva'];
+        $confirmar_pass_nueva = $_POST['confirmar_pass_nueva'];
 
-        // Prepara la consulta para obtener el hash de la contraseña desde la base de datos
+        // Verifica si la nueva contraseña y su confirmación coinciden
+        if ($pass_nueva !== $confirmar_pass_nueva) {
+            echo "Las contraseñas nuevas no coinciden.";
+            exit;
+        }
+
+        // Verifica si la nueva contraseña cumple con los requisitos de complejidad
+        if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/', $pass_nueva)) {
+            echo "La nueva contraseña debe tener al menos 12 caracteres, incluyendo mayúsculas, minúsculas, números y símbolos.";
+            exit();
+        }
+
+        // Prepara la consulta para obtener la contraseña almacenada desde la base de datos
         $sql = "SELECT password FROM usuarios WHERE id = :id";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':id', $_COOKIE['cookie_session']);
@@ -19,12 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt->rowCount() == 1) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             $stored_password = $row['password'];
-
-            // Calcula el hash SHA-256 de la contraseña antigua ingresada
             $hashed_password_antigua = hash('sha256', $pass_antigua);
 
-            // Verifica si los hashes coinciden
-            if ($hashed_password_antigua === $stored_password) {
+            // Verifica si la contraseña antigua es válida utilizando password_verify
+            if (password_verify($pass_antigua, $stored_password)) {
                 // Calcula el hash SHA-256 de la nueva contraseña
                 $hashed_password_nueva = hash('sha256', $pass_nueva);
 
@@ -36,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt_update->execute();
 
                 // Redirige al usuario a una página de éxito o a su perfil, por ejemplo
-                header("Location: ../perfil.php");
+                header("Location: ../index.php");
                 exit();
             } else {
                 // Si las contraseñas antiguas no coinciden, muestra un mensaje de error
@@ -51,3 +67,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Por favor, complete todos los campos.";
     }
 }
+?>

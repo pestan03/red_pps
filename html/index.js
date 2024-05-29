@@ -83,22 +83,6 @@ function hideDropdown() {
 
 
 
-//FUNCION DE VALIDACION DE PASSWORD
-function validarPassword() {
-    const password = document.getElementById("pass").value;
-    const passError = document.getElementById("passError");
-    const submitBtn = document.getElementById("submitBtn");
-
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
-    if (password.match(regex)) {
-        passError.textContent = "";
-        submitBtn.disabled = false;
-    } else {
-        passError.textContent = "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.";
-        submitBtn.disabled = true;
-    }
-}
 
 
 
@@ -191,4 +175,51 @@ function redirectToIndex(userId) {
             console.error('Error en la solicitud AJAX:', error);
         }
     });
+}
+
+// FUNCIÓN DE VALIDACIÓN DE PASSWORD
+function validarPassword() {
+    const password = document.getElementById("pass_nueva").value;
+    const passError = document.getElementById("passError");
+    const submitBtn = document.getElementById("submitBtn");
+
+    const errors = [];
+    if (!/[A-Z]/.test(password)) {
+        errors.push("No cumple con mayúsculas.");
+    }
+    if (!/[a-z]/.test(password)) {
+        errors.push("No cumple con minúsculas.");
+    }
+    if (!/\d/.test(password)) {
+        errors.push("No tiene números.");
+    }
+    if (!/[@$!%*?&]/.test(password)) {
+        errors.push("No tiene símbolos.");
+    }
+    if (password.length < 12) {
+        errors.push("Debe tener al menos 12 caracteres.");
+    }
+
+    if (errors.length === 0) {
+        passError.textContent = "";
+        submitBtn.disabled = false;
+    } else {
+        passError.innerHTML = errors.join("<br>");
+        submitBtn.disabled = true;
+    }
+
+    validarConfirmacionPassword();
+}
+
+// FUNCIÓN DE VALIDACIÓN DE CONFIRMACIÓN DE PASSWORD EN CAMBIAR CONTRASENA
+function validarConfirmacionPassword() {
+    const password = document.getElementById("pass_nueva").value;
+    const confirmPassword = document.getElementById("confirmar_pass_nueva").value;
+    const confirmPassError = document.getElementById("confirmPassError");
+
+    if (password !== confirmPassword) {
+        confirmPassError.textContent = "Las contraseñas no coinciden.";
+    } else {
+        confirmPassError.textContent = "";
+    }
 }
