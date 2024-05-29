@@ -62,7 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }else{
             echo '<script type="text/javascript">';
             echo 'window.location.href="../php/iniciarsesion.php";';
-            echo '</script>';        }
+            echo '</script>';        
+        }
     } else {
         echo '<script type="text/javascript">';
         echo 'window.location.href="../php/iniciarsesion.php";';
