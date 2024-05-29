@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             }
         }else{
-            echo "no se encontro el token"
+            echo "no se encontro el token";
         }
     } else {
         echo "Error: No se encontró la cookie de sesión. INICIA SESION PARA PODER PUBLICAR NOTICIAS";
