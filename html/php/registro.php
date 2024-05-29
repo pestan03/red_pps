@@ -38,7 +38,7 @@ try {
                     $stmt_insert_user->bindParam(':email', $email);
                     $stmt_insert_user->execute();
                     echo '<script type="text/javascript">';
-                    echo 'window.location.href="../../index.php";';
+                    echo 'window.location.href="../index.php";';
                     echo '</script>';
                     exit();
                 } else {
