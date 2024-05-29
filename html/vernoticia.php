@@ -84,6 +84,7 @@ try {
                         <div class="noticia">
                             <div class="div-perfil-comentario">
                                 <?php
+                                
                                 // Mostrar la foto de perfil del usuario que publicó la noticia
                                 if (!empty($row['foto_perfil'])) {
                                     echo '<img src="data:image/jpeg;base64,' . base64_encode($noticia['foto_perfil']) . '" class="foto-perfil">';
