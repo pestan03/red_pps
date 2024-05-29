@@ -31,7 +31,7 @@ try {
                 // Comprobar la correspondencia DNI+letra utilizando la función comprobar_dni_letra de la clase Funciones
                 if (Funciones::comprobarDniLetra($dni)) {
                     // Preparar consulta para insertar los datos en la base de datos utilizando consultas preparadas
-                    $stmt_insert_user = $conn->prepare("INSERT INTO usuarios (user, password, dni, email) VALUES (?, ?, ?, ?)");
+                    $stmt_insert_user = $conn->prepare("INSERT INTO usuarios (user, password, dni, email) VALUES (:user, :password, :dni, :email)");
                     $stmt_insert_user->bindParam(':user', $user);
                     $stmt_insert_user->bindParam(':password', $hashed_password);
                     $stmt_insert_user->bindParam(':dni', $dni);

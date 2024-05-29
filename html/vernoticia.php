@@ -84,19 +84,18 @@ try {
                         <div class="noticia">
                             <div class="div-perfil-comentario">
                                 <?php
-                                
                                 // Mostrar la foto de perfil del usuario que publicó la noticia
-                                if (!empty($row['foto_perfil'])) {
+                                if (!empty($noticia['foto_perfil'])) {
                                     echo '<img src="data:image/jpeg;base64,' . base64_encode($noticia['foto_perfil']) . '" class="foto-perfil">';
                                 } else {
                                     echo '<img src="./fotos/userblanco.png" class="foto-perfil">';
                                 }
                                 ?>
-                                <p class="nombre-usuario-noticia"><?php htmlspecialchars($noticia['user']) ?></p>
+                                <p class="nombre-usuario-noticia"><?php echo htmlspecialchars($noticia['user']) ?></p>
                             </div>
-                            <p class="noticia-titulo"><?php htmlspecialchars($noticia['titulo_noticia']) ?></p>
-                            <p class="noticia-contenido"><?php htmlspecialchars($noticia['contenido_noticia']) ?></p>
-                            <p class="noticia-fecha"><?php htmlspecialchars($noticia['fecha_publicacion']) ?></p>
+                            <p class="noticia-titulo"><?php echo htmlspecialchars($noticia['titulo_noticia']) ?></p>
+                            <p class="noticia-contenido"><?php echo htmlspecialchars($noticia['contenido_noticia']) ?></p>
+                            <p class="noticia-fecha"><?php echo htmlspecialchars($noticia['fecha_publicacion']) ?></p>
                             <?php
                             if (!empty($noticia['imagen'])) {
                                 echo '<img style="max-width: 300px; max-height:100px; " src="data:image/jpeg;base64,' . base64_encode($noticia['imagen']) . '">';

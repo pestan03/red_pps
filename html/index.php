@@ -125,18 +125,18 @@
     </div>
 
     <div class="overlay">
-        <div class="content">
-            <div class="close-button"><i class="material-icons">close</i></div>
-            <form class="form-container" action="php/publicarnoticia.php" method="post" enctype="multipart/form-data">
-                <h2 class="form-title">Publicar Noticia</h2>
-                <div style="margin-bottom:20px">
-                    <input class="form-input" type="text" name="titulo" placeholder="Título de la noticia">
-                    <textarea class="form-textarea" name="contenido" placeholder="Contenido de la noticia"></textarea>
-                    <input class="form-file" type="file" id="imagen" name="imagen" accept="image/*">
-                </div>
-                <button class="publish-button" type="submit">Publicar</button>
-            </form>
-        </div>
+            <div class="content">
+                <div class="close-button"><i class="material-icons">close</i></div>
+                <form class="form-container" action="php/publicarnoticia.php" method="post" enctype="multipart/form-data">
+                    <h2 class="form-title">Publicar Noticia</h2>
+                    <div style="margin-bottom:20px">
+                        <input class="form-input" type="text" name="titulo" placeholder="Título de la noticia">
+                        <textarea class="form-textarea" name="contenido" placeholder="Contenido de la noticia"></textarea>
+                        <input class="form-file" type="file" id="imagen" name="imagen" accept="image/*">
+                    </div>
+                    <button class="publish-button" type="submit">Publicar</button>
+                </form>
+            </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./index.js" defer></script>
