@@ -14,7 +14,7 @@ try {
         $user = $_POST['username'];
         $pass = $_POST['password'];
         $dni = $_POST['dni'];
-        $email=$_POST['email'];
+        $email=$_POST['email']; 
 
         // Preparar consulta para verificar si el nombre de usuario ya existe
         $stmt_check_user = $conn->prepare("SELECT * FROM usuarios WHERE user = ?");
