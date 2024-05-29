@@ -61,12 +61,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }else{
             echo '<script type="text/javascript">';
-            echo 'window.location.href="../../iniciarsesion.php";';
+            echo 'window.location.href="../iniciarsesion.html";';
             echo '</script>';        
         }
     } else {
         echo '<script type="text/javascript">';
-        echo 'window.location.href="../../iniciarsesion.php";';
+        echo 'window.location.href="../iniciarsesion.html";';
         echo '</script>';    }
 }
 ?>
