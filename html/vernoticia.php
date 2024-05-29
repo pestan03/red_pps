@@ -50,8 +50,8 @@ try {
                 </div>
                 <div id="botonesSesion" class="botones-sesion">
                     <?php
-                    // Verificar si existe la cookie de sesión del usuario
-                    if (isset($_COOKIE['cookie_session'])) {
+                    // Verificar si existe la cookie de sesión del usuario y el token
+                    if (isset($_COOKIE['cookie_session'])&& isset($_COOKIE['session_token']) && isset($_SESSION['session_token'])) {
                         $valor_cookie = $_COOKIE['cookie_session'];
                         $sql_session = "SELECT * FROM usuarios WHERE id = :id";
                         $stmt = $conn->prepare($sql_session);
@@ -102,6 +102,7 @@ try {
                             }
                             ?>
                             <form class="form-comentario" action="php/comentar.php" method="post">
+                                <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                                 <input type="hidden" name="idnoticia" value="<?php htmlspecialchars($noticia_id) ?>">
                                 <div class="contenedor-comentario">
                                     <textarea name="comentario" class="area_comentario" placeholder="Comenta..."></textarea>

@@ -12,7 +12,7 @@
     <?php
     include_once './php/conexion.php';
     // Verificar si la cookie de sesión existe
-    if (isset($_COOKIE['cookie_session'])) {
+    if (isset($_COOKIE['cookie_session'])&& isset($_COOKIE['session_token']) && isset($_SESSION['session_token'])) {
         // Obtener el ID del usuario desde la cookie de sesión
         $usuario_id = $_COOKIE['cookie_session'];
 
@@ -56,6 +56,7 @@
     <form action="/php/procesar_imagen.php" method="post" enctype="multipart/form-data">
         <label for="imagen">Seleccionar imagen de perfil:</label><br>
         <!-- Agrega un input file oculto -->
+        
         <input type="file" id="imagen" style="display: none;" name="imagen" accept="image/jpeg, image/png" required>
 
         <input type="submit" id="confirmar" value="CONFIRMAR CAMBIO">
