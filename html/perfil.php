@@ -33,12 +33,13 @@
                 echo '<h2 class="nombre-usuario">Nombre de usuario: ' . htmlspecialchars($usuario['user']) . '</h2>';
                 if (!empty($imagen)) {
                     echo '<div class="foto-perfil-container">';
-                    echo '<img src="./fotos/userblanco.png" class="foto-perfil" onClick="selectImage()">';
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode($imagen) . '" style="width:20%; height:auto;"class="foto-perfil" onClick="selectImage()">';
                     echo '</div>';
                 } else { 
                     echo '<div class="foto-perfil-container">';
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($imagen) . '" style="width:20%; height:auto;"class="foto-perfil" onClick="selectImage()">';
+                    echo '<img src="./fotos/userblanco.png" class="foto-perfil" onClick="selectImage()">';
                     echo '</div>';
+                    
                     
                 }
                 echo '<p class="texto-dni">DNI:' . htmlspecialchars($usuario['dni']) . '</p>';
