@@ -51,7 +51,7 @@ try {
                 <div id="botonesSesion" class="botones-sesion">
                     <?php
                     // Verificar si existe la cookie de sesión del usuario y el token
-                    if (isset($_COOKIE['cookie_session'])&& isset($_COOKIE['session_token']) && isset($_SESSION['session_token'])) {
+                    if (isset($_COOKIE['cookie_session'])) {
                         $valor_cookie = $_COOKIE['cookie_session'];
                         $sql_session = "SELECT * FROM usuarios WHERE id = :id";
                         $stmt = $conn->prepare($sql_session);
