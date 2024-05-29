@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     // Redirigir después de la inserción
     header("Location: {$_SERVER['HTTP_REFERER']}");
-    exit();
+    exit(); 
 }
 ?>
 <script src="index.js"></script>
