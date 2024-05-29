@@ -53,7 +53,7 @@
     <form action="/php/procesar_imagen.php" method="post" enctype="multipart/form-data">
         <label for="imagen">Seleccionar imagen de perfil:</label><br>
         <input type="file" id="imagen" style="display: none;" name="imagen" accept="image/jpeg, image/png" required>
-        <input type="submit" id="confirmar" value="CONFIRMAR CAMBIO">
+        <input type="submit" id="confirmar" value="CONFIRMAR CAMBIO DE IMAGEN">
     </form>
 
     <center>
