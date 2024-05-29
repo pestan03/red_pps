@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const overlayTrigger = document.querySelector('.overlay-trigger');
     const overlay = document.querySelector('.overlay');
-    
+
     overlayTrigger.addEventListener('click', function () {
         overlay.classList.toggle('active');
     });
@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
 function borrarCookie() {
     // Establecer la fecha de expiración en el pasado
     document.cookie = 'cookie_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'session_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+
     // Recargar la página para reflejar los cambios
     console.log("se ha llegado a borrarcookie");
     window.location.reload();
