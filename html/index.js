@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const overlayTrigger = document.querySelector('.overlay-trigger');
     const overlay = document.querySelector('.overlay');
-
+    
     overlayTrigger.addEventListener('click', function () {
         overlay.classList.toggle('active');
     });
