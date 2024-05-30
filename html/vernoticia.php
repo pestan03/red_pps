@@ -131,10 +131,10 @@ try {
                                             echo '<img src="./fotos/userblanco.png" class="foto-perfil">';
                                         }
                                         ?>
-                                        <p class="nombre-usuario-comentario"><? htmlspecialchars($row_comentario['user']) ?></p>
+                                        <p class="nombre-usuario-comentario"><? echo htmlspecialchars($row_comentario['user']) ?></p>
                                     </div>
-                                    <p class="contenido-comentario"><? htmlspecialchars($row_comentario['contenido']) ?></p>
-                                    <p class="fecha-envio-comentario"><? htmlspecialchars($row_comentario['datesent']) ?></p>
+                                    <p class="contenido-comentario"><? echo htmlspecialchars($row_comentario['contenido']) ?></p>
+                                    <p class="fecha-envio-comentario"><? echo htmlspecialchars($row_comentario['datesent']) ?></p>
                                 </div>
                                 <?php
                             }
