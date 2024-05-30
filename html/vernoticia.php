@@ -112,35 +112,43 @@ try {
                         </div>
                         <!-- PARTE COMENTARIO -->
                         <?php
-                        // Consulta para obtener los comentarios
+                        // Consulta para obtener los comentarios y la información del usuario asociado
                         $sql_comentario = "SELECT comentarios.*, usuarios.*
-                                            FROM comentarios
-                                            INNER JOIN usuarios ON comentarios.user_id = usuarios.id
-                                            WHERE comentarios.id_noticia = :noticia_id";
+                    FROM comentarios
+                    INNER JOIN usuarios ON comentarios.user_id = usuarios.id
+                    WHERE comentarios.id_noticia = :noticia_id";
                         $stmt_comentario = $conn->prepare($sql_comentario);
                         $stmt_comentario->bindParam(':noticia_id', $noticia_id);
                         $stmt_comentario->execute();
+
+                        // Verificar si se encontraron comentarios
                         if ($stmt_comentario->rowCount() > 0) {
                             while ($row_comentario = $stmt_comentario->fetch(PDO::FETCH_ASSOC)) {
                                 ?>
-                                <div class="comentario" data-comentario-id="<? htmlspecialchars($row_comentario['comentario_id']) ?>">
+                                <div class="comentario"
+                                    data-comentario-id="<?php echo htmlspecialchars($row_comentario['comentario_id']) ?>">
                                     <div class="div-perfil-comentario">
                                         <?php
+                                        // Mostrar la foto de perfil del usuario
                                         if (!empty($row_comentario['foto_perfil'])) {
                                             echo '<img src="data:image/jpeg;base64,' . base64_encode($row_comentario['foto_perfil']) . '" class="foto-perfil">';
                                         } else {
                                             echo '<img src="./fotos/userblanco.png" class="foto-perfil">';
                                         }
                                         ?>
-                                        <p class="nombre-usuario-comentario"><? echo htmlspecialchars($row_comentario['user']) ?></p>
+                                        <p class="nombre-usuario-comentario"><?php echo htmlspecialchars($row_comentario['user']) ?></p>
                                     </div>
-                                    <p class="contenido-comentario"><? echo htmlspecialchars($row_comentario['contenido']) ?></p>
-                                    <p class="fecha-envio-comentario"><? echo htmlspecialchars($row_comentario['datesent']) ?></p>
+                                    <p class="contenido-comentario"><?php echo htmlspecialchars($row_comentario['contenido']) ?></p>
+                                    <p class="fecha-envio-comentario"><?php echo htmlspecialchars($row_comentario['datesent']) ?></p>
                                 </div>
                                 <?php
                             }
+                        } else {
+                            // Si no se encontraron comentarios, mostrar un mensaje indicando esto
+                            echo "No hay comentarios disponibles para esta noticia.";
                         }
                         ?>
+
                     </div>
                 </div>
             </div>
