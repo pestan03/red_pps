@@ -102,7 +102,6 @@ try {
                             }
                             ?>
                             <form class="form-comentario" action="php/comentar.php" method="post">
-                                <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                                 <input type="hidden" name="idnoticia" value="<?php htmlspecialchars($noticia_id) ?>">
                                 <div class="contenedor-comentario">
                                     <textarea name="comentario" class="area_comentario" placeholder="Comenta..."></textarea>

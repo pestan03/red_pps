@@ -11,14 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     // Verifica si los campos de contraseña no están vacíos
     if (!empty($_POST['pass_antigua']) && !empty($_POST['pass_nueva']) && !empty($_POST['confirmar_pass_nueva'])) {
-        $pass_antigua = $_POST['pass_antigua'];
-        $pass_nueva = $_POST['pass_nueva'];
-        $confirmar_pass_nueva = $_POST['confirmar_pass_nueva'];
+        $pass_antigua = htmlspecialchars($_POST['pass_antigua'], ENT_QUOTES, 'UTF-8');
+        $pass_nueva = htmlspecialchars($_POST['pass_nueva'], ENT_QUOTES, 'UTF-8');
+        $confirmar_pass_nueva = htmlspecialchars($_POST['confirmar_pass_nueva'], ENT_QUOTES, 'UTF-8');
 
         // Verifica si la nueva contraseña y su confirmación coinciden
         if ($pass_nueva !== $confirmar_pass_nueva) {
             echo "Las contraseñas nuevas no coinciden.";
-            exit;
+            exit();
         }
 
         // Verifica si la nueva contraseña cumple con los requisitos de complejidad
@@ -37,10 +37,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt->rowCount() == 1) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             $stored_password = $row['password'];
+
+            // Calcula el hash SHA-256 de la contraseña antigua
             $hashed_password_antigua = hash('sha256', $pass_antigua);
 
-            // Verifica si la contraseña antigua es válida utilizando password_verify
-            if (password_verify($pass_antigua, $stored_password)) {
+            // Verifica si la contraseña antigua es válida comparando los hashes
+            if ($hashed_password_antigua === $stored_password) {
                 // Calcula el hash SHA-256 de la nueva contraseña
                 $hashed_password_nueva = hash('sha256', $pass_nueva);
 
@@ -53,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 // Redirige al usuario a una página de éxito o a su perfil, por ejemplo
                 header("Location: ../index.php");
+                
                 exit();
             } else {
                 // Si las contraseñas antiguas no coinciden, muestra un mensaje de error

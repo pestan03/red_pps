@@ -10,7 +10,7 @@
     <?php
     include_once './php/conexion.php';
     // Verificar si la cookie de sesión existe y está autenticada
-    if (isset($_COOKIE['cookie_session']) && isset($_COOKIE['session_token']) && isset($_SESSION['session_token'])) {
+    if (isset($_COOKIE['cookie_session'])) {
         // Obtener el ID del usuario desde la cookie de sesión
         $usuario_id = $_COOKIE['cookie_session'];
 

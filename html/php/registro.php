@@ -11,10 +11,11 @@ try {
     // Verifica si se ha enviado el formulario
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Obtener los valores enviados por el formulario
-        $user = $_POST['username'];
-        $pass = $_POST['password'];
-        $dni = $_POST['dni'];
-        $email=$_POST['email']; 
+        $user = htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');
+        $pass = htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8');
+        $dni = htmlspecialchars($_POST['dni'], ENT_QUOTES, 'UTF-8');
+        $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
+
 
         // Preparar consulta para verificar si el nombre de usuario ya existe
         $stmt_check_user = $conn->prepare("SELECT * FROM usuarios WHERE user = ?");
@@ -49,7 +50,7 @@ try {
             }
         }
     }
-} catch(PDOException $e) {
+} catch (PDOException $e) {
     echo "Error de conexión a la base de datos: " . $e->getMessage();
 }
 
@@ -57,4 +58,3 @@ try {
 
 ?>
 <script src="index.js"></script>
-

@@ -1,6 +1,6 @@
 <?php
 // Conexión a la base de datos (modifica estos valores según tu configuración)
-include_once './conexion.php'; 
+include_once './conexion.php';
 
 // Crear conexión
 // Establecer el modo de error PDO a excepción
@@ -10,8 +10,9 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verifica si los campos de usuario y contraseña no están vacíos
     if (!empty($_POST['user']) && !empty($_POST['pass'])) {
-        $user = $_POST['user'];
-        $pass = $_POST['pass'];
+        $user = htmlspecialchars($_POST['user']);
+        $pass = htmlspecialchars($_POST['pass']);
+
 
         // Consulta para obtener el hash de la contraseña desde la base de datos
         $sql = "SELECT id, user, password FROM usuarios WHERE user = :user";
@@ -42,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ];
                 // creacion de token
                 // Establecer la cookie
-                setcookie("cookie_session", $row['id'], $options);           
+                setcookie("cookie_session", $row['id'], $options);
                 header("Location: ../index.php");
             } else {
                 // Si las credenciales son incorrectas, muestra un mensaje de error

@@ -17,7 +17,7 @@ class Funciones {
     public static function validarContrasena($password) {
         $es_valida = true;
     
-        // La contraseña debe tener al menos 8 caracteres
+        // La contraseña debe tener al menos 12 caracteres
         if (strlen($password) < 12) {
             $es_valida = false;
         }
