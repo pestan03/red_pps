@@ -223,8 +223,13 @@ function validarConfirmacionPassword() {
         confirmPassError.textContent = "";
     }
 }
-var params = (new URL(document.location)).searchParams;
-    var idNoticia = params.get('idnoticia');
-
+function agregarIdNoticia() {
+    // Obtener el valor de idnoticia del sessionStorage
+    var idNoticia = sessionStorage.getItem('idnoticia');
+    
     // Asignar el valor al campo de formulario
     document.getElementById('idnoticia').value = idNoticia;
+    
+    // Devolver true para permitir que el formulario se envíe
+    return true;
+}

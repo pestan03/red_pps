@@ -101,7 +101,8 @@ try {
                                 echo '<img style="max-width: 300px; max-height:100px; " src="data:image/jpeg;base64,' . base64_encode($noticia['imagen']) . '">';
                             }
                             ?>
-                            <form class="form-comentario" action="php/comentar.php" method="post">
+                            <form class="form-comentario" action="php/comentar.php" method="post"
+                                onsubmit="return agregarIdNoticia()">
                                 <input type="hidden" name="idnoticia" id="idnoticia" value="">
                                 <div class="contenedor-comentario">
                                     <textarea name="comentario" class="area_comentario" placeholder="Comenta..."></textarea>
