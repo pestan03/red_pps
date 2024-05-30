@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Conexión a la base de datos (modifica estos valores según tu configuración)
 include_once './conexion.php';
 
@@ -30,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Verifica si los hashes coinciden
             if ($hashed_password === $stored_password) {
                 // Iniciar sesión y redirigir al usuario a una página de bienvenida
-                session_start();
 
                 // Configurar las opciones de la cookie
                 $options = [
