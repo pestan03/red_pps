@@ -16,7 +16,6 @@ function loadEnv($path)
         $value = trim($value);
 
         if (!array_key_exists($name, $_SERVER) && !array_key_exists($name, $_ENV)) {
-            putenv(sprintf('%s=%s', $name, $value));
             $_ENV[$name] = $value;
             $_SERVER[$name] = $value;
         }
@@ -25,12 +24,13 @@ function loadEnv($path)
 
 // Cargar las variables de entorno desde el archivo .env
 loadEnv(__DIR__ . '/.env');
-// Obtener las variables de entorno
-$servername = getenv('DB_SERVER');
-$username = getenv('DB_USER');
-$password = getenv('DB_PASSWORD');
-$database = getenv('DB_NAME');
-$port = getenv('DB_PORT');
+
+// Obtener las variables de entorno desde $_ENV
+$servername = $_ENV['DB_SERVER'];
+$username = $_ENV['DB_USER'];
+$password = $_ENV['DB_PASSWORD'];
+$database = $_ENV['DB_NAME'];
+$port = $_ENV['DB_PORT'];
 
 try {
     // Crear una instancia de PDO para la conexión a la base de datos
