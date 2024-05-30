@@ -17,7 +17,7 @@ if (isset($_COOKIE['cookie_session'])) {
             // Insertar el nuevo comentario en la base de datos
             $sql = "INSERT INTO comentarios (id_noticia, user_id, contenido) VALUES (:id_noticia, :user_id, :content)";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':id_noticia', $noticia_id);
+            $stmt->bindParam(':id_noticia', $_GET['noticiaId']);
             $stmt->bindParam(':user_id', $user_id);
             $stmt->bindParam(':content', $content);
             $stmt->execute();
