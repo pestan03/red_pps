@@ -37,7 +37,6 @@ try {
     $conn = new PDO("mysql:host=$servername;port=$port;dbname=$database", $username, $password);
     // Establecer el modo de error de PDO a excepción
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Conexión exitosa";
 } catch(PDOException $e) {
     // Manejo de errores de conexión
     error_log("Error de conexión: " . $e->getMessage());

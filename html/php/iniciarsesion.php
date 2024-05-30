@@ -45,13 +45,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Establecer la cookie
                 setcookie("cookie_session", $row['id'], $options);
                 header("Location: ../index.php");
+                exit();
             } else {
                 // Si las credenciales son incorrectas, muestra un mensaje de error
                 header("Location:  {$_SERVER['HTTP_REFERER']}");
+                exit();
             }
         } else {
             // Si el usuario no existe en la base de datos, muestra un mensaje de error
             header("Location:  {$_SERVER['HTTP_REFERER']}");
+            exit();
         }
     } else {
         // Si los campos están vacíos, muestra un mensaje de error
