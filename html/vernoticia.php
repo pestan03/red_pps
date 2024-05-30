@@ -102,7 +102,7 @@ try {
                             }
                             ?>
                             <form class="form-comentario" action="php/comentar.php" method="post">
-                                <input type="hidden" name="idnoticia" value="<?php htmlspecialchars($noticia_id) ?>">
+                                <input type="hidden" name="idnoticia" value="<?php $noticia['id_noticia'] ?>">
                                 <div class="contenedor-comentario">
                                     <textarea name="comentario" class="area_comentario" placeholder="Comenta..."></textarea>
                                     <button class="boton-comentario" type="submit"><i class="fas fa-paper-plane"></i></button>

@@ -7,7 +7,7 @@ if (isset($_COOKIE['cookie_session'])) {
     if (isset($_POST['comentario'], $_POST['idnoticia'])) {
         // Obtener el contenido del comentario y el ID de la noticia desde el formulario
         $content = htmlspecialchars($_POST['comentario']);
-        $noticia_id = $_SESSION['noticiaId'];
+        $noticia_id = $_POST['idnoticia'];
         // Obtener el user_id del usuario que está comentando desde la cookie de sesión
         $user_id = $_COOKIE['cookie_session'];
         
