@@ -102,7 +102,8 @@ try {
                             }
                             ?>
                             <form class="form-comentario" action="php/comentar.php" method="post">
-                                <input type="hidden" name="idnoticia" id="idnoticia" value="<?php $_GET['noticiaId']?>">
+                                <input type="hidden" name="idnoticia" id="idnoticia"
+                                    value="<?php echo htmlspecialchars($_GET['noticiaId']); ?>">
                                 <div class="contenedor-comentario">
                                     <textarea name="comentario" class="area_comentario" placeholder="Comenta..."></textarea>
                                     <button class="boton-comentario" type="submit"><i class="fas fa-paper-plane"></i></button>
