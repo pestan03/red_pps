@@ -15,7 +15,7 @@ if (isset($_COOKIE['cookie_session'])) {
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Insertar el nuevo comentario en la base de datos
-            $sql = "INSERT INTO comentarios (id_noticia, user_id, contenido, datesent) VALUES (:id_noticia, :user_id, :content, NOW())";
+            $sql = "INSERT INTO comentarios (id_noticia, user_id, contenido) VALUES (:id_noticia, :user_id, :content)";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':id_noticia', $noticia_id);
             $stmt->bindParam(':user_id', $user_id);
