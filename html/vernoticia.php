@@ -101,8 +101,9 @@ try {
                                 echo '<img style="max-width: 300px; max-height:100px; " src="data:image/jpeg;base64,' . base64_encode($noticia['imagen']) . '">';
                             }
                             ?>
-                            <form class="form-comentario" action="php/comentar.php" method="post">
-                                <input type="hidden" name="idnoticia" value="<?php $noticia['id_noticia'] ?>">
+                            <form class="form-comentario" action="php/comentar.php" method="post"
+                                onsubmit="return agregarIdNoticia()">
+                                <input type="hidden" name="idnoticia" id="idnoticia" value="">
                                 <div class="contenedor-comentario">
                                     <textarea name="comentario" class="area_comentario" placeholder="Comenta..."></textarea>
                                     <button class="boton-comentario" type="submit"><i class="fas fa-paper-plane"></i></button>
@@ -131,7 +132,7 @@ try {
                                             echo '<img src="./fotos/userblanco.png" class="foto-perfil">';
                                         }
                                         ?>
-                                        <p class="nombre-usuario-comentario"><?htmlspecialchars($row_comentario['user']) ?></p>
+                                        <p class="nombre-usuario-comentario"><? htmlspecialchars($row_comentario['user']) ?></p>
                                     </div>
                                     <p class="contenido-comentario"><? htmlspecialchars($row_comentario['contenido']) ?></p>
                                     <p class="fecha-envio-comentario"><? htmlspecialchars($row_comentario['datesent']) ?></p>
