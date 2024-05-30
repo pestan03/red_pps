@@ -24,7 +24,7 @@ function loadEnv($path)
 }
 
 // Cargar las variables de entorno desde el archivo .env
-loadEnv('../.env');
+loadEnv(__DIR__ . '/.env');
 // Obtener las variables de entorno
 $servername = getenv('DB_SERVER');
 $username = getenv('DB_USER');
